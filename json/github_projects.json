@@ -3,7 +3,7 @@
     "subtitle": "在 GitHub 上探索我们的作品，为喜欢的项目点亮 Star",
     "show_star_count": true,
     "show_fork_count": true,
-    "update_interval": 300000,
+    "update_interval": 3000000,
     "projects": [
         {
             "id": 1,
