@@ -4,29 +4,9 @@
     "members": [
         {
             "id": 1,
-            "name": "xiaomu18",
-            "display_name": "xiaomu18",
-            "role": "项目发起人 / 后端开发",
-            "role_badge_color": "#7D5260",
-            "subtitle": "Project Lead & Backend",
-            "description": "SMSM 核心架构设计，WPF-C# 开发，服务器管理逻辑实现",
-            "avatar": {
-                "type": "gradient",
-                "gradient": "linear-gradient(135deg, #6750A4, #4A4458)",
-                "initials": "XM",
-                "image": ""
-            },
-            "tech_stack": [
-                "C#",
-                "Java",
-                "WPF"
-            ]
-        },
-        {
-            "id": 2,
             "name": "YBTsa",
             "display_name": "YBTsa",
-            "role": "APP 设计",
+            "role": "项目发起人 / APP 设计",
             "role_badge_color": "#7D5260",
             "subtitle": "App Designer",
             "description": "负责 SMSM 应用程序设计与交互体验优化",
@@ -38,9 +18,30 @@
             },
             "tech_stack": [
                 "C#",
+                "Java",
                 "WPF"
             ]
         },
+        {
+            "id": 2,
+            "name": "xiaomu18",
+            "display_name": "xiaomu18",
+            "role": "后端开发",
+            "role_badge_color": "#7D5260",
+            "subtitle": "Project Lead & Backend",
+            "description": "SMSM 核心架构设计，后端使用 C# 开发，服务器管理逻辑实现",
+            "avatar": {
+                "type": "gradient",
+                "gradient": "linear-gradient(135deg, #6750A4, #4A4458)",
+                "initials": "XM",
+                "image": ""
+            },
+            "tech_stack": [
+                "C#",
+                "Java",
+                "WPF"
+            ]
+        },       
         {
             "id": 3,
             "name": "STRAYLIGHT",
@@ -61,7 +62,7 @@
                 "PHP",
                 "Java",
                 "Python",
-                "FL Studio"
+                "FL Studio(雾)"
             ]
         }
     ]
