@@ -1,0 +1,41 @@
+{
+    "title": "我们的开源项目",
+    "subtitle": "在 GitHub 上探索我们的作品，为喜欢的项目点亮 Star",
+    "show_star_count": true,
+    "show_fork_count": true,
+    "update_interval": 300000,
+    "projects": [
+        {
+            "id": 1,
+            "name": "SMSM",
+            "full_name": "Simple Minecraft Server Manager",
+            "description": "面向 Windows 系统的开源 Minecraft 本地服务器管理器，由 C# + WPF 驱动",
+            "github_url": "https://github.com/We-are-Starlight-Chaser/SimplyMinecraftServerManager",
+            "language": "C#",
+            "language_color": "#178600",
+            "star_count": null,
+            "fork_count": null,
+            "is_featured": true,
+            "display_order": 1
+        },
+        {
+            "id": 2,
+            "name": "SCW",
+            "full_name": "Starlight Chaser Website",
+            "description": "我们团队的网站源码,是的就是你现在浏览的这个网站!",
+            "github_url": "https://github.com/We-are-Starlight-Chaser/We-are-Starlight-Chaser.github.io",
+            "language": "HTML",
+            "language_color": "#e34c26",
+            "star_count": null,
+            "fork_count": null,
+            "is_featured": false,
+            "display_order": 2
+        }
+    ],
+    "display_options": {
+        "card_style": "material",
+        "show_language_badge": true,
+        "animate_numbers": true,
+        "refresh_button": true
+    }
+}

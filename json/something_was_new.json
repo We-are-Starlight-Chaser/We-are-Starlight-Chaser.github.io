@@ -1,0 +1,17 @@
+{
+    "project": {
+        "name": "SMSM",
+        "full_name": "Simple Minecraft Server Manager",
+        "version": "v1.0",
+        "description": "是一个面向 Windows 系统的开源本地服务器管理器",
+        "sub_description": "由 C# + WPF 驱动，为本地服务器打造的一站式开服解决方案",
+        "github_url": "https://github.com/We-Are-Starlight-Chaser/SMSM",
+        "download_url": "#download",
+        "release_date": "2024-02-27",
+        "is_new": true
+    },
+    "badge": {
+        "text": "SMSM v1.0 现已发布",
+        "icon": "verified"
+    }
+}

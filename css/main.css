@@ -1,0 +1,867 @@
+/**
+ * [main.css] - 主样式文件
+ * We Are Starlight Chaser
+ * 
+ * 此文件是网站的主样式文件，包含页面布局、组件样式等
+ * 引入其他 CSS 文件：color.css, geusable.css
+ */
+
+/* ============================================
+   引入依赖样式
+   ============================================ */
+
+@import url('color.css');
+@import url('geusable.css');
+
+/* ============================================
+   基础重置与全局样式
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+    background-color: var(--md-background);
+    color: var(--md-on-surface);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================
+   星空背景 Canvas
+   ============================================ */
+
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ============================================
+   导航栏 - Material App Bar
+   ============================================ */
+
+.app-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background-color: rgba(28, 27, 31, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 1000;
+    border-bottom: 1px solid var(--md-outline-variant);
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .app-bar {
+    background-color: rgba(254, 247, 255, 0.85);
+}
+
+.app-bar.scrolled {
+    box-shadow: var(--md-elevation-2);
+}
+
+/* 品牌区域 */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--md-primary-container);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.brand:hover {
+    opacity: 0.8;
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--md-primary), #9B7BFF);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* 导航链接 */
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px;
+    border-radius: var(--md-radius-small);
+    text-decoration: none;
+    color: var(--md-on-surface);
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link:hover {
+    background-color: var(--md-primary-8);
+    color: var(--md-primary);
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: var(--md-primary-16);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.nav-link:active::before {
+    width: 200px;
+    height: 200px;
+}
+
+/* ============================================
+   Hero Section - 首屏区域
+   ============================================ */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 96px 24px 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 1;
+}
+
+/* Hero 徽章 */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    box-shadow: 0 0 20px rgba(103, 80, 164, 0.3);
+}
+
+/* Hero 标题 */
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #EADDFF 0%, #9B7BFF 50%, #6750A4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.hero h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #EADDFF 0%, #9B7BFF 50%, #6750A4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--md-on-surface-variant);
+    margin-bottom: 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hero 操作按钮 */
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* 最新项目展示 */
+.latest-project {
+    margin-top: 48px;
+    padding: 32px;
+    background: var(--md-surface);
+    border-radius: var(--md-radius-large);
+    border: 1px solid var(--md-outline-variant);
+    max-width: 700px;
+    width: 100%;
+}
+
+.latest-project-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--md-primary-container);
+    /* 使用textshadow做一个文字描边效果  */
+    text-shadow: 1px 1px 2px var(--md-on-primary-container);
+    margin-bottom: 8px;
+}
+
+.latest-project-description {
+    color: var(--md-on-surface-variant);
+    margin-bottom: 24px;
+}
+
+/* ============================================
+   Section - 内容区块
+   ============================================ */
+
+.section {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: var(--md-on-surface);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--md-on-surface-variant);
+    margin-bottom: 64px;
+    font-size: 1.125rem;
+}
+
+/* ============================================
+   Features Grid - 功能网格
+   ============================================ */
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+/* ============================================
+   Team Grid - 团队网格
+   ============================================ */
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.team-card {
+    background: linear-gradient(145deg, var(--md-surface), var(--md-primary-8));
+    border-radius: var(--md-radius-large);
+    padding: 32px 24px;
+    text-align: center;
+    border: 1px solid var(--md-primary-20);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--md-primary), #9B7BFF);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover::before {
+    transform: scaleX(1);
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(103, 80, 164, 0.2);
+}
+
+/* 头像 */
+.avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--md-primary), #4A4458);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 2.5rem;
+    color: white;
+    border: 3px solid var(--md-primary-container);
+    box-shadow: 0 0 0 4px rgba(103, 80, 164, 0.2);
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-initials {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.team-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: var(--md-on-surface);
+}
+
+.team-card .subtitle {
+    color: var(--md-on-surface-variant);
+    font-size: 0.875rem;
+    margin-bottom: 12px;
+}
+
+.team-card .description {
+    color: var(--md-on-surface-variant);
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+/* 技术栈 */
+.tech-stack {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+/* ============================================
+   News Section - 新闻区域
+   ============================================ */
+
+.news-container {
+    background: var(--md-surface);
+    border-radius: var(--md-radius-large);
+    padding: 32px;
+    box-shadow: var(--md-elevation-1);
+    margin-top: 32px;
+}
+
+.news-item {
+    padding: 24px;
+    border-bottom: 1px solid var(--md-surface-variant);
+    transition: all 0.2s;
+    border-radius: var(--md-radius-medium);
+    cursor: pointer;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-item:hover {
+    background: var(--md-primary-8);
+    transform: translateY(-1px);
+    box-shadow: var(--md-primary-30) 0 0 0 4px;
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.news-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--md-on-surface);
+}
+
+.news-date {
+    font-size: 0.875rem;
+    color: var(--md-on-surface-variant);
+}
+
+.news-excerpt {
+    color: var(--md-on-surface-variant);
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+/* ============================================
+   GitHub Projects Section - GitHub 项目展示
+   ============================================ */
+
+.github-projects-section {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.github-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.github-project-card {
+    background: var(--md-surface);
+    border-radius: var(--md-radius-large);
+    padding: 24px;
+    border: 1px solid var(--md-outline-variant);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.github-project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--md-primary), #9B7BFF);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.github-project-card:hover::before {
+    transform: scaleX(1);
+}
+
+.github-project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--md-elevation-3);
+    border-color: var(--md-primary-30);
+}
+
+.github-project-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.github-project-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--md-primary-container);
+    border-radius: var(--md-radius-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--md-on-primary-container);
+}
+
+.github-project-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--md-on-surface);
+    flex: 1;
+}
+
+.github-project-description {
+    color: var(--md-on-surface-variant);
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.github-project-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.github-project-language {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875rem;
+    color: var(--md-on-surface-variant);
+}
+
+.language-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.github-project-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.github-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.875rem;
+    color: var(--md-on-surface-variant);
+    transition: color 0.2s;
+}
+
+.github-stat:hover {
+    color: var(--md-primary);
+}
+
+.github-stat .material-icons {
+    font-size: 18px;
+}
+
+.github-stat-star .material-icons {
+    color: var(--github-star-color);
+}
+
+.github-stat-fork .material-icons {
+    color: var(--github-fork-color);
+}
+
+/* Star 数量动画 */
+.star-count {
+    font-variant-numeric: tabular-nums;
+    transition: all 0.3s ease;
+}
+
+.star-count-updating {
+    opacity: 0.5;
+    transform: scale(1.1);
+}
+
+/* 刷新按钮 */
+.github-projects-refresh {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.btn-refresh {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--md-surface);
+    color: var(--md-primary);
+    border: 1px solid var(--md-outline);
+    border-radius: var(--md-radius-medium);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-refresh:hover {
+    background: var(--md-primary-8);
+    border-color: var(--md-primary);
+}
+
+.btn-refresh.spinning .material-icons {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   Update Widget - 更新提示小部件
+   ============================================ */
+
+.update-widget {
+    position: fixed;
+    max-width: 400px;
+    bottom: 24px;
+    right: 24px;
+    background: var(--md-surface);
+    border-radius: var(--md-radius-large);
+    padding: 16px 24px;
+    box-shadow: var(--md-elevation-3);
+    border: 1px solid var(--md-primary);
+    display: none;
+    align-items: center;
+    gap: 16px;
+    z-index: 999;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.update-widget-icon {
+    color: var(--md-primary);
+    flex-shrink: 0;
+}
+
+.update-info {
+    flex: 1;
+}
+
+.update-info h4 {
+    margin: 0 0 4px 0;
+    color: var(--md-on-surface);
+    font-size: 1rem;
+}
+
+.update-info p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--md-on-surface-variant);
+}
+
+/* ============================================
+   Footer - 页脚
+   ============================================ */
+
+footer {
+    background: var(--md-surface);
+    border-top: 1px solid var(--md-surface-variant);
+    padding: 48px 24px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.social-links {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.social-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--md-surface-variant);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--md-on-surface);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.social-link:hover {
+    background: var(--md-primary);
+    color: white;
+    transform: translateY(-4px);
+}
+
+.footer-copyright {
+    color: var(--md-on-surface-variant);
+    font-size: 0.875rem;
+}
+
+.footer-tagline {
+    font-size: 0.875rem;
+    margin-top: 8px;
+    display: block;
+    color: var(--md-on-surface-variant);
+}
+
+.footer-tagline .heart {
+    color: var(--md-primary);
+}
+
+/* ============================================
+   Theme Toggle - 主题切换按钮
+   ============================================ */
+
+.theme-toggle {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--md-elevation-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(180deg);
+}
+
+/* ============================================
+   Mobile Navigation - 移动端导航
+   ============================================ */
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--md-on-surface);
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* ============================================
+   响应式设计
+   ============================================ */
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--md-surface);
+        flex-direction: column;
+        padding: 16px;
+        box-shadow: var(--md-elevation-2);
+        gap: 4px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .features-grid,
+    .team-grid,
+    .github-projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 60px 16px;
+    }
+
+    .update-widget {
+        left: 16px;
+        right: 16px;
+        max-width: none;
+    }
+
+    .theme-toggle {
+        bottom: 90px;
+    }
+}
+
+/* ============================================
+   工具类
+   ============================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #EADDFF 0%, #9B7BFF 50%, #6750A4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

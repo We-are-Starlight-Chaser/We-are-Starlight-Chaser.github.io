@@ -1,0 +1,41 @@
+{
+    "title": "SMSM 能做什么？",
+    "features": [
+        {
+            "id": 1,
+            "icon": "dns",
+            "title": "多服务器管理",
+            "description": "SMSM 允许你同时管理多个 Minecraft 服务器实例，支持独立配置、一键启动/停止，实时状态监控与资源占用显示。"
+        },
+        {
+            "id": 2,
+            "icon": "coffee",
+            "title": "JDK 智能管理",
+            "description": "SMSM 可以帮你自动检测系统的 Java 环境，支持多版本 JDK 切换，还可以一键下载与配置，告别 Java 版本兼容性问题。"
+        },
+        {
+            "id": 3,
+            "icon": "terminal",
+            "title": "可视化控制台",
+            "description": "SMSM 使用 Material Design 风格的终端界面，支持命令历史、自动补全、日志高亮与异常检测。"
+        },
+        {
+            "id": 4,
+            "icon": "backup",
+            "title": "自动备份系统",
+            "description": "SMSM 支持定时自动备份存档，支持增量备份，确保您的世界数据万无一失。"
+        },
+        {
+            "id": 5,
+            "icon": "group",
+            "title": "玩家管理",
+            "description": "SMSM 内置白名单、黑名单管理，支持玩家数据统计、权限组配置与行为监控。"
+        },
+        {
+            "id": 6,
+            "icon": "extension",
+            "title": "插件生态",
+            "description": "SMSM 支持 Paper/Spigot/Purpur 等主流服务端，支持搜索插件并一键安装与管理。"
+        }
+    ]
+}

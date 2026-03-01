@@ -1,0 +1,68 @@
+{
+    "title": "开发团队",
+    "subtitle": "两位追逐星光的开发者，为 Minecraft 社区打造简单易用的工具",
+    "members": [
+        {
+            "id": 1,
+            "name": "xiaomu18",
+            "display_name": "xiaomu18",
+            "role": "项目发起人 / 后端开发",
+            "role_badge_color": "#7D5260",
+            "subtitle": "Project Lead & Backend",
+            "description": "SMSM 核心架构设计，WPF-C# 开发，服务器管理逻辑实现",
+            "avatar": {
+                "type": "gradient",
+                "gradient": "linear-gradient(135deg, #6750A4, #4A4458)",
+                "initials": "XM",
+                "image": ""
+            },
+            "tech_stack": [
+                "C#",
+                "Java",
+                "WPF"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "YBTsa",
+            "display_name": "YBTsa",
+            "role": "APP 设计",
+            "role_badge_color": "#7D5260",
+            "subtitle": "App Designer",
+            "description": "负责 SMSM 应用程序设计与交互体验优化",
+            "avatar": {
+                "type": "gradient",
+                "gradient": "linear-gradient(135deg, #7D5260, #625B71)",
+                "initials": "YB",
+                "image": ""
+            },
+            "tech_stack": [
+                "C#",
+                "WPF"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "STRAYLIGHT",
+            "display_name": "STRAYLIGHT",
+            "role": "前端开发",
+            "role_badge_color": "#4A4458",
+            "subtitle": "客串嘉宾",
+            "description": "本网站与相关 Web 开发，追求极致的交互体验",
+            "avatar": {
+                "type": "gradient",
+                "gradient": "linear-gradient(135deg, #4A4458, #6750A4)",
+                "initials": "ST",
+                "image": ""
+            },
+            "tech_stack": [
+                "HTML/CSS/JS",
+                "C#",
+                "PHP",
+                "Java",
+                "Python",
+                "FL Studio"
+            ]
+        }
+    ]
+}

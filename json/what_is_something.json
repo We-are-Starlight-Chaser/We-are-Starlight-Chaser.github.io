@@ -1,0 +1,15 @@
+{
+    "title": "什么是 SMSM ？",
+    "subtitle": "SMSM (Simple Minecraft Server Manager) 提供全方位的服务器管理能力",
+    "image": {
+        "src": "./asset/image/smsm-preview.png",
+        "alt": "SMSM 应用程序预览图",
+        "fallback_text": "图片加载失败"
+    },
+    "features_summary": [
+        "简洁直观的 Material Design 3 界面设计",
+        "支持多种 Minecraft 服务端类型",
+        "智能化的服务器配置管理",
+        "实时监控服务器运行状态"
+    ]
+}

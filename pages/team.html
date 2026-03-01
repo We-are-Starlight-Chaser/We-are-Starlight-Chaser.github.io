@@ -1,0 +1,532 @@
+<!--
+  [team.html] - 团队介绍页面
+  We Are Starlight Chaser
+  
+  此文件展示开发团队的详细信息
+  包括成员介绍、技能栈、角色分工等
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发团队 | We Are Starlight Chaser</title>
+    <meta name="description" content="We Are Starlight Chaser 开发团队介绍 - xiaomu18, YBTsa, STRAYLIGHT">
+    <meta name="keywords" content="Starlight Chaser, 逐星者, 开发团队, SMSM">
+    <meta name="author" content="We Are Starlight Chaser">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- 主样式文件 -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- 页面特定样式 -->
+    <style>
+        /* 团队页面专用样式 */
+        .team-hero {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 24px 48px;
+            position: relative;
+        }
+
+        .team-hero h1 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #EADDFF 0%, #9B7BFF 50%, #6750A4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .team-hero p {
+            font-size: 1.25rem;
+            color: var(--md-on-surface-variant);
+            max-width: 600px;
+        }
+
+        /* 团队统计 */
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            max-width: 800px;
+            margin: 48px auto;
+            padding: 0 24px;
+        }
+
+        .stat-card {
+            background: var(--md-surface);
+            border-radius: var(--md-radius-large);
+            padding: 24px;
+            text-align: center;
+            border: 1px solid var(--md-outline-variant);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--md-elevation-2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--md-primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--md-on-surface-variant);
+        }
+
+        /* 团队成员网格 */
+        .team-section {
+            padding: 80px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-grid-detailed {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        /* 团队成员链接 */
+        .team-social-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .team-social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--md-surface-variant);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--md-on-surface);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .team-social-link:hover {
+            background: var(--md-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* 加入我们部分 */
+        .join-section {
+            padding: 80px 24px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .join-card {
+            background: linear-gradient(145deg, var(--md-surface), var(--md-primary-8));
+            border-radius: var(--md-radius-large);
+            padding: 48px 32px;
+            border: 1px solid var(--md-primary-20);
+        }
+
+        .join-card h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: var(--md-on-surface);
+        }
+
+        .join-card p {
+            color: var(--md-on-surface-variant);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .team-grid-detailed {
+                grid-template-columns: 1fr;
+            }
+
+            .team-card-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .team-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 星空背景 Canvas -->
+    <canvas id="starfield"></canvas>
+
+    <!-- 导航栏 -->
+    <header class="app-bar" id="appBar">
+        <a href="../index.html" class="brand">
+            <div class="brand-icon">
+                <span class="material-icons">rocket_launch</span>
+            </div>
+            <span>Starlight Chaser</span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="../index.html" class="nav-link">首页</a>
+            <a href="./team.html" class="nav-link">关于我们</a>
+            <a href="./projects.html" class="nav-link">其他项目</a>
+            <a href="../index.html#news" class="nav-link">动态</a>
+            <a href="https://github.com/We-Are-Starlight-Chaser" class="nav-link" target="_blank">
+                <span class="material-icons" style="font-size: 18px;">open_in_new</span>
+                GitHub
+            </a>
+        </nav>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <span class="material-icons">menu</span>
+        </button>
+    </header>
+
+    <!-- 团队 Hero 区域 -->
+    <section class="team-hero">
+        <h1>认识我们的团队</h1>
+        <p>一群追逐星光的开发者，致力于为 Minecraft 社区打造简单易用的工具</p>
+    </section>
+
+    <!-- 团队统计 -->
+    <div class="team-stats">
+        <div class="stat-card">
+            <div class="stat-number" id="statMembers">3</div>
+            <div class="stat-label">核心成员</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="statProjects">2+</div>
+            <div class="stat-label">开源项目</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="statCommits">100+</div>
+            <div class="stat-label">代码提交</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="statSince">2024</div>
+            <div class="stat-label">成立年份</div>
+        </div>
+    </div>
+
+    <!-- 团队成员详情 -->
+    <section class="team-section">
+        <h2 class="section-title">核心成员</h2>
+        <p class="section-subtitle">每一位成员都为项目贡献独特的价值</p>
+
+        <!-- 团队成员卡片 - 从 JSON 加载 -->
+        <div class="team-grid-detailed" id="teamGridDetailed">
+            <!-- 加载时的骨架屏 -->
+            <div class="skeleton" style="height: 300px;"></div>
+            <div class="skeleton" style="height: 300px;"></div>
+            <div class="skeleton" style="height: 300px;"></div>
+        </div>
+    </section>
+
+    <!-- 加入我们 -->
+    <section class="join-section">
+        <div class="join-card">
+            <span class="material-icons"
+                style="font-size: 48px; color: var(--md-primary); margin-bottom: 16px;">group_add</span>
+            <h2>加入我们</h2>
+            <p>我们始终欢迎有才华、有热情的开发者加入团队。如果你对 Minecraft 服务器管理工具感兴趣，欢迎联系我们！</p>
+            <a href="https://github.com/We-Are-Starlight-Chaser" class="btn btn-filled" target="_blank">
+                <span class="material-icons">mail</span>
+                联系我们
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/We-Are-Starlight-Chaser" class="social-link" target="_blank" title="GitHub">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-copyright">
+                &copy; 2024 We Are Starlight Chaser. All rights reserved.
+            </p>
+            <span class="footer-tagline">
+                Made with <span class="heart">♥</span> for Minecraft Community
+            </span>
+        </div>
+    </footer>
+
+    <!-- 主题切换按钮 -->
+    <button class="theme-toggle" id="themeToggle" title="切换主题">
+        <span class="material-icons" id="themeIcon">light_mode</span>
+    </button>
+
+    <!-- jQuery 库 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 通用函数脚本 -->
+    <script src="../js/geu_functions.js"></script>
+
+    <!-- 页面特定脚本 -->
+    <script>
+        /**
+         * [team.html] 团队页面脚本
+         * We Are Starlight Chaser
+         */
+
+        $(document).ready(function () {
+
+            // 初始化星空背景
+            const App = { theme: 'dark' };
+
+            /**
+             * 星空背景类
+             */
+            class Starfield {
+                constructor(canvasId, options = {}) {
+                    this.canvas = document.getElementById(canvasId);
+                    if (!this.canvas) return;
+
+                    this.ctx = this.canvas.getContext('2d');
+                    this.stars = [];
+                    this.mouseX = 0;
+                    this.mouseY = 0;
+
+                    this.options = Object.assign({
+                        starCount: 150,
+                        connectionDistance: 100,
+                        mouseInteraction: true
+                    }, options);
+
+                    this.init();
+                }
+
+                init() {
+                    this.resize();
+                    this.createStars();
+                    this.bindEvents();
+                    this.animate();
+                }
+
+                resize() {
+                    this.canvas.width = window.innerWidth;
+                    this.canvas.height = window.innerHeight;
+                }
+
+                createStars() {
+                    this.stars = [];
+                    for (let i = 0; i < this.options.starCount; i++) {
+                        this.stars.push({
+                            x: Math.random() * this.canvas.width,
+                            y: Math.random() * this.canvas.height,
+                            size: Math.random() * 2,
+                            speedX: (Math.random() - 0.5) * 0.5,
+                            speedY: (Math.random() - 0.5) * 0.5,
+                            opacity: Math.random(),
+                            fadeSpeed: 0.01 + Math.random() * 0.02
+                        });
+                    }
+                }
+
+                bindEvents() {
+                    $(window).on('resize', () => {
+                        this.resize();
+                        this.createStars();
+                    });
+
+                    $(window).on('mousemove', (e) => {
+                        this.mouseX = e.clientX;
+                        this.mouseY = e.clientY;
+                    });
+                }
+
+                animate() {
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                    this.stars.forEach(star => {
+                        // 更新位置
+                        star.x += star.speedX;
+                        star.y += star.speedY;
+
+                        // 鼠标交互
+                        const dx = this.mouseX - star.x;
+                        const dy = this.mouseY - star.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 100) {
+                            star.x -= dx * 0.01;
+                            star.y -= dy * 0.01;
+                        }
+
+                        // 边界检查
+                        if (star.x < 0 || star.x > this.canvas.width ||
+                            star.y < 0 || star.y > this.canvas.height) {
+                            star.x = Math.random() * this.canvas.width;
+                            star.y = Math.random() * this.canvas.height;
+                        }
+
+                        // 闪烁效果
+                        star.opacity += star.fadeSpeed;
+                        if (star.opacity > 1 || star.opacity < 0.2) {
+                            star.fadeSpeed = -star.fadeSpeed;
+                        }
+
+                        // 绘制
+                        this.ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                        this.ctx.beginPath();
+                        this.ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                        this.ctx.fill();
+                    });
+
+                    // 连线效果
+                    this.ctx.strokeStyle = 'rgba(103, 80, 164, 0.1)';
+                    this.ctx.lineWidth = 0.5;
+                    for (let i = 0; i < this.stars.length; i++) {
+                        for (let j = i + 1; j < this.stars.length; j++) {
+                            const dx = this.stars[i].x - this.stars[j].x;
+                            const dy = this.stars[i].y - this.stars[j].y;
+                            const distance = Math.sqrt(dx * dx + dy * dy);
+
+                            if (distance < this.options.connectionDistance) {
+                                this.ctx.beginPath();
+                                this.ctx.moveTo(this.stars[i].x, this.stars[i].y);
+                                this.ctx.lineTo(this.stars[j].x, this.stars[j].y);
+                                this.ctx.stroke();
+                            }
+                        }
+                    }
+
+                    requestAnimationFrame(() => this.animate());
+                }
+            }
+
+            // 初始化星空
+            new Starfield('starfield');
+
+            // 初始化主题
+            function initTheme() {
+                const savedTheme = StarlightChaser.utils.storage.get('theme', 'dark');
+                App.theme = savedTheme;
+                $('html').attr('data-theme', App.theme);
+                $('#themeIcon').text(App.theme === 'dark' ? 'light_mode' : 'dark_mode');
+
+                $('#themeToggle').on('click', function () {
+                    App.theme = App.theme === 'dark' ? 'light' : 'dark';
+                    $('html').attr('data-theme', App.theme);
+                    $('#themeIcon').text(App.theme === 'dark' ? 'light_mode' : 'dark_mode');
+                    StarlightChaser.utils.storage.set('theme', App.theme);
+                });
+            }
+            initTheme();
+
+            // 初始化导航
+            $(window).on('scroll', StarlightChaser.utils.throttle(function () {
+                const $appBar = $('#appBar');
+                if ($(window).scrollTop() > 50) {
+                    $appBar.addClass('scrolled');
+                } else {
+                    $appBar.removeClass('scrolled');
+                }
+            }, 100));
+
+            $('#mobileMenuBtn').on('click', function () {
+                $('#navLinks').toggleClass('active');
+            });
+
+            // 加载团队成员
+            async function loadTeam() {
+                try {
+                    const data = await StarlightChaser.api.loadJSON('../json/our_team.json');
+                    renderTeamDetailed(data);
+                } catch (error) {
+                    console.warn('加载团队信息失败:', error);
+                }
+            }
+
+            /**
+             * 渲染详细团队成员卡片
+             */
+            function renderTeamDetailed(data) {
+                if (!data || !data.members) return;
+
+                const $grid = $('#teamGridDetailed');
+
+                const html = data.members.map(member => {
+                    const techStackHtml = member.tech_stack.map(tech =>
+                        `<span class="tech-tag">${tech}</span>`
+                    ).join('');
+
+                    return `
+                            <div class="team-card" data-member-id="${member.id}">
+                                <div class="avatar" style="background: ${member.avatar.gradient};">
+                                    <span class="avatar-initials">${member.avatar.initials}</span>
+                                </div>
+                                <span class="role-badge" style="background: ${member.role_badge_color};">${member.role}</span>
+                                <h3>${member.display_name}</h3>
+                                <p class="subtitle">${member.subtitle}</p>
+                                <p class="description">${member.description}</p>
+                                <div class="tech-stack">${techStackHtml}</div>
+                                <!--<div class="team-social-links">
+                                    <a href="https://github.com/${member.name}" class="team-social-link" target="_blank" title="GitHub">
+                                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                        </svg>
+                                    </a>
+                                </div>-->
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                $grid.html(html);
+            }
+
+            // 加载团队数据
+            loadTeam();
+
+            // 数字动画
+            function animateNumbers() {
+                $('.stat-number').each(function () {
+                    const $this = $(this);
+                    const target = parseInt($this.text()) || 0;
+                    $this.text('0');
+
+                    setTimeout(() => {
+                        $this.animateNumber(target, 1500);
+                    }, 300);
+                });
+            }
+
+            // 页面加载完成后执行数字动画
+            setTimeout(animateNumbers, 500);
+
+            console.log('🌟 Starlight Chaser - 团队页面已加载');
+        });
+    </script>
+</body>
+
+</html>

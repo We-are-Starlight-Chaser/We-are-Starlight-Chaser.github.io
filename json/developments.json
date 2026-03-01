@@ -1,0 +1,14 @@
+{
+    "title": "我们的动态",
+    "subtitle": "最新进展与版本更新",
+    "news": [
+        {
+            "id": 1,
+            "title": "团队官网构建完成",
+            "date": "2026-03-01",
+            "excerpt": "由 STRAYLIGHT 设计开发的网页已经上线，支持明暗主题切换与星空动效。",
+            "url": "#",
+            "is_highlight": false
+        }
+    ]
+}

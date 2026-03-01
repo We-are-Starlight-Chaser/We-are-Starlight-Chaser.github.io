@@ -1,0 +1,121 @@
+/**
+ * [color.css] - 颜色定义样式文件
+ * We Are Starlight Chaser
+ */
+
+/* ============================================
+   CSS 变量定义 - Material Design 3 主题色
+   ============================================ */
+
+:root {
+    /* Primary - 鸢尾紫 */
+    --md-primary: #6750A4;
+    --md-on-primary: #FFFFFF;
+    --md-primary-container: #EADDFF;
+    --md-on-primary-container: #21005D;
+    --md-primary-fixed: #EADDFF;
+    --md-on-primary-fixed: #21005D;
+
+    /* Secondary - 柔和紫灰 */
+    --md-secondary: #625B71;
+    --md-on-secondary: #FFFFFF;
+    --md-secondary-container: #E8DEF8;
+    --md-on-secondary-container: #1D192B;
+
+    /* Tertiary - 玫瑰棕 */
+    --md-tertiary: #7D5260;
+    --md-on-tertiary: #FFFFFF;
+    --md-tertiary-container: #FFD8E4;
+    --md-on-tertiary-container: #31111D;
+
+    /* Error - 错误色 */
+    --md-error: #B3261E;
+    --md-on-error: #FFFFFF;
+    --md-error-container: #F9DEDC;
+    --md-on-error-container: #410E0B;
+
+    /* Surface - 表面色 (深色模式默认) */
+    --md-surface: #1C1B1F;
+    --md-surface-dim: #141218;
+    --md-surface-bright: #3B383E;
+    --md-surface-variant: #49454F;
+    --md-on-surface: #E6E1E5;
+    --md-on-surface-variant: #CAC4D0;
+
+    /* Background - 背景色 */
+    --md-background: #141218;
+    --md-on-background: #E6E1E5;
+
+    /* Outline - 轮廓色 */
+    --md-outline: #938F99;
+    --md-outline-variant: #49454F;
+
+    /* Shadow - 阴影 */
+    --md-shadow: #000000;
+
+    /* Scrim - 遮罩 */
+    --md-scrim: #000000;
+
+    /* Inverse - 反色 */
+    --md-inverse-surface: #E6E1E5;
+    --md-inverse-on-surface: #322F35;
+    --md-inverse-primary: #D0BCFF;
+
+    /* Custom - 自定义颜色 */
+    --star-color: rgba(255, 255, 255, 0.8);
+    --accent-glow: rgba(103, 80, 164, 0.6);
+    --github-star-color: #FFD700;
+    --github-fork-color: #9B7BFF;
+}
+
+/* ============================================
+   浅色模式颜色覆盖
+   ============================================ */
+
+[data-theme="light"] {
+    /* Surface - 表面色 (浅色模式) */
+    --md-surface: #FEF7FF;
+    --md-surface-dim: #DED8E1;
+    --md-surface-bright: #FEF7FF;
+    --md-surface-variant: #E7E0EC;
+    --md-on-surface: #1C1B1F;
+    --md-on-surface-variant: #49454F;
+
+    /* Background - 背景色 */
+    --md-background: #FFFFFF;
+    --md-on-background: #1C1B1F;
+
+    /* Outline - 轮廓色 */
+    --md-outline: #79747E;
+    --md-outline-variant: #CAC4D0;
+
+    /* Custom - 自定义颜色 */
+    --star-color: rgba(103, 80, 164, 0.3);
+    --accent-glow: rgba(103, 80, 164, 0.4);
+}
+
+/* ============================================
+   透明度变体
+   ============================================ */
+
+:root {
+    /* 主色透明度变体 */
+    --md-primary-8: rgba(103, 80, 164, 0.08);
+    --md-primary-12: rgba(103, 80, 164, 0.12);
+    --md-primary-16: rgba(103, 80, 164, 0.16);
+    --md-primary-20: rgba(103, 80, 164, 0.20);
+    --md-primary-30: rgba(103, 80, 164, 0.30);
+    --md-primary-50: rgba(103, 80, 164, 0.50);
+
+    /* 表面色透明度变体 */
+    --md-surface-8: rgba(28, 27, 31, 0.08);
+    --md-surface-12: rgba(28, 27, 31, 0.12);
+    --md-surface-16: rgba(28, 27, 31, 0.16);
+
+    /* 浅色模式表面色透明度 */
+    [data-theme="light"] {
+        --md-surface-8: rgba(254, 247, 255, 0.08);
+        --md-surface-12: rgba(254, 247, 255, 0.12);
+        --md-surface-16: rgba(254, 247, 255, 0.16);
+    }
+}

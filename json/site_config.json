@@ -1,0 +1,107 @@
+{
+    "site": {
+        "title": "We Are Starlight Chaser",
+        "subtitle": "我们是逐星者",
+        "description": "SMSM - 本地 Minecraft 服务器管理解决方案，由 xiaomu18 与 YBTsa 联合开发",
+        "language": "zh-CN",
+        "theme": {
+            "default": "dark",
+            "allow_switch": true
+        }
+    },
+    "navigation": {
+        "brand": {
+            "name": "Starlight Chaser",
+            "icon": "rocket_launch"
+        },
+        "links": [
+            {
+                "id": 1,
+                "text": "首页",
+                "url": "./index.html",
+                "icon": "",
+                "external": false
+            },
+            {
+                "id": 2,
+                "text": "关于SMSM",
+                "url": "#about-smsm",
+                "icon": "",
+                "external": false
+            },
+            {
+                "id": 3,
+                "text": "关于我们",
+                "url": "./pages/team.html",
+                "icon": "",
+                "external": false
+            },
+            {
+                "id": 4,
+                "text": "其他项目",
+                "url": "./pages/projects.html",
+                "icon": "",
+                "external": false
+            },
+            {
+                "id": 5,
+                "text": "动态",
+                "url": "#news",
+                "icon": "",
+                "external": false
+            },
+            {
+                "id": 6,
+                "text": "GitHub",
+                "url": "https://github.com/We-Are-Starlight-Chaser",
+                "icon": "open_in_new",
+                "external": true
+            }
+        ]
+    },
+    "footer": {
+        "copyright": "2024 We Are Starlight Chaser. All rights reserved.",
+        "tagline": "Made with ♥ for Minecraft Community",
+        "links": [
+            {
+                "text": "首页",
+                "url": "./index.html"
+            },
+            {
+                "text": "关于我们",
+                "url": "./pages/team.html"
+            },
+            {
+                "text": "开源项目",
+                "url": "./pages/projects.html"
+            },
+            {
+                "text": "GitHub",
+                "url": "https://github.com/We-Are-Starlight-Chaser"
+            }
+        ],
+        "social_links": [
+            {
+                "platform": "github",
+                "url": "https://github.com/We-Are-Starlight-Chaser",
+                "icon": "github"
+            }
+        ]
+    },
+    "starfield": {
+        "enabled": true,
+        "star_count": 200,
+        "connection_distance": 100,
+        "mouse_interaction": true
+    },
+    "pages": {
+        "team": {
+            "path": "./pages/team.html",
+            "title": "开发团队"
+        },
+        "projects": {
+            "path": "./pages/projects.html",
+            "title": "开源项目"
+        }
+    }
+}
