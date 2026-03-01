@@ -22,17 +22,10 @@
 
 ```
 /WASC/                              # 项目根目录
-├── asset/                          # 资源文件夹
-│   ├── image/                      # 图片资源
-│   ├── video/                      # 视频资源
-│   └── audio/                      # 音频资源
 ├── css/                            # 样式文件
-│   ├── dashboard/                  # 仪表盘相关 CSS
-│   ├── page/                       # 页面特定样式
 │   ├── color.css                   # 颜色定义
 │   ├── geusable.css                # 可复用通用样式
 │   └── main.css                    # 主样式文件
-├── dashboard/                      # 仪表盘页面
 ├── err/                            # 错误页面
 │   └── 404.html                    # 404 错误页面
 ├── js/                             # JavaScript 脚本
@@ -48,6 +41,8 @@
 │   ├── update_info.json            # 更新信息
 │   └── site_config.json            # 网站全局配置
 ├── pages/                          # HTML 页面文件
+│   ├── projects.html               # 全部项目页面
+│   └── team.html                   # 关于团队页面
 ├── index.html                      # 网站首页
 ├── LICENSE                         # 开源许可证
 └── README.MD                       # 项目说明文档
