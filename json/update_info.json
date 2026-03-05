@@ -1,11 +1,1 @@
-{
-    "enabled": false,
-    "auto_show": false,
-    "show_delay": 1978,
-    "current_version": "26Dev_02a",
-    "latest_version": "26Dev_02a",
-    "title": "发现新版本",
-    "description": "新增了更多功能，如插件系统、多语言支持等。",
-    "download_url": "https://github.com/We-Are-Starlight-Chaser/SMSM/releases",
-    "button_text": "查看"
-}
+
