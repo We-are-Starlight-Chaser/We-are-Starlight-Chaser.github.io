@@ -1,1 +1,11 @@
-
+{
+    "enabled": false,
+    "auto_show": false,
+    "show_delay": 1978,
+    "current_version": "26Dev_02a",
+    "latest_version": "26Dev_02a",
+    "title": "仍在开发中",
+    "description": "我们正在尝试为 SMSM 新增一些功能，敬请期待……",
+    "download_url": "#",
+    "button_text": "知道了"
+}
