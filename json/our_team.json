@@ -70,12 +70,12 @@
             "name": "matl",
             "display_name": "matl",
             "role": "后端开发",
-            "role_badge_color": "#4A4458",
+            "role_badge_color": "#7D5260",
             "subtitle": "Backend",
             "description": "擅长Java，做有Slimefun-Helper",
             "avatar": {
                 "type": "gradient",
-                "gradient": "linear-gradient(135deg, #4A4458, #6750A4)",
+                "gradient": "linear-gradient(135deg, #7D5260, #625B71)",
                 "initials": "MA",
                 "image": ""
             },
