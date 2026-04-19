@@ -1,6 +1,6 @@
 {
     "title": "开发团队",
-    "subtitle": "两位追逐星光的开发者，为 Minecraft 社区打造简单易用的工具",
+    "subtitle": "三位追逐星光的开发者，为 Minecraft 社区打造简单易用的工具",
     "members": [
         {
             "id": 1,
@@ -8,7 +8,7 @@
             "display_name": "YBTsa",
             "role": "项目发起人 / APP 设计",
             "role_badge_color": "#7D5260",
-            "subtitle": "App Designer",
+            "subtitle": "Project Lead & App Designer",
             "description": "负责 SMSM 应用程序设计与交互体验优化",
             "avatar": {
                 "type": "gradient",
@@ -28,7 +28,7 @@
             "display_name": "xiaomu18",
             "role": "后端开发",
             "role_badge_color": "#7D5260",
-            "subtitle": "Project Lead & Backend",
+            "subtitle": "Backend",
             "description": "SMSM 核心架构设计，后端使用 C# 开发，服务器管理逻辑实现",
             "avatar": {
                 "type": "gradient",
@@ -63,6 +63,25 @@
                 "Java",
                 "Python",
                 "FL Studio(雾)"
+            ]
+        },
+        {
+            "id": 4,
+            "name": "matl",
+            "display_name": "matl",
+            "role": "后端开发",
+            "role_badge_color": "#4A4458",
+            "subtitle": "Backend",
+            "description": "擅长Java，做有Slimefun-Helper",
+            "avatar": {
+                "type": "gradient",
+                "gradient": "linear-gradient(135deg, #4A4458, #6750A4)",
+                "initials": "MA",
+                "image": ""
+            },
+            "tech_stack": [
+                "C#",
+                "Java"
             ]
         }
     ]
