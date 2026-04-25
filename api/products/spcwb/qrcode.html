@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证码显示页面</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h2 { color: #333; margin-bottom: 20px; }
+        .vc-text {
+            font-size: 24px;
+            color: #007BFF;
+            font-weight: bold;
+            margin: 20px 0;
+            word-break: break-all;
+        }
+        .vc-img {
+            max-width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+        .btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover { background-color: #0056b3; }
+        .error { color: red; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>验证码信息</h2>
+    
+    <!-- 方式一：显示为文本 -->
+    <div id="text-container">
+        <p>您的验证码是：</p>
+        <div id="vc-display" class="vc-text">加载中...</div>
+    </div>
+
+    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+    <!-- 方式二：显示为图片 (如果 vc 是图片链接) -->
+    <div id="image-container">
+        <p>图片预览：</p>
+        <img id="vc-image" class="vc-img" src="" alt="验证码图片">
+    </div>
+
+    <br>
+    <a href="javascript:window.location.reload()" class="btn">刷新页面</a>
+</div>
+
+<script>
+    // 1. 获取 URL 中的参数
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(window.location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // 2. 获取 vc 的值
+    var vc = getUrlParameter('vc');
+    var textDisplay = document.getElementById('vc-display');
+    var imgDisplay = document.getElementById('vc-image');
+
+    // 3. 判断并显示
+    if (vc) {
+        // 显示文本
+        textDisplay.innerText = vc;
+        
+        // 尝试作为图片显示 (如果 vc 以 .jpg, .png 等结尾，或者是 http 开头)
+        if (vc.match(/\.(jpeg|jpg|gif|png)$/) != null || vc.startsWith('http')) {
+            imgDisplay.src = vc;
+        } else {
+            imgDisplay.style.display = 'none'; // 如果不是图片链接，隐藏图片标签
+            document.querySelector('#image-container p').innerText = "（vc不是图片链接，仅显示文本）";
+        }
+    } else {
+        // 如果没有传入 vc 参数
+        textDisplay.innerText = "未检测到 vc 参数";
+        textDisplay.classList.add('error');
+        imgDisplay.style.display = 'none';
+        document.getElementById('image-container').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
