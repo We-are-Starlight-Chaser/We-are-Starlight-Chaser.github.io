@@ -11,12 +11,9 @@
     <title>404 - 页面未找到 | We Are Starlight Chaser</title>
     <meta name="description" content="页面未找到 - We Are Starlight Chaser">
 
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <!-- Google Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- 引入主样式 -->
@@ -74,9 +71,9 @@
             opacity: 0.8;
         }
 
-        .error-illustration .material-icons {
+        .error-illustration .fluent-icon {
             font-size: 200px;
-            background: linear-gradient(135deg, var(--md-primary), #9B7BFF);
+            background: linear-gradient(135deg, var(--fluent-brand), var(--fluent-brand-60));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -92,7 +89,7 @@
     <div class="error-container">
         <!-- 插图 -->
         <div class="error-illustration">
-            <span class="material-icons">travel_explore</span>
+            <span class="fluent-icon" data-icon="search"></span>
         </div>
 
         <!-- 错误代码 -->
@@ -110,11 +107,11 @@
         <!-- 操作按钮 -->
         <div class="error-actions">
             <a href="../index.html" class="btn btn-filled">
-                <span class="material-icons">home</span>
+                <span class="fluent-icon" data-icon="home"></span>
                 返回首页
             </a>
             <a href="https://github.com/We-Are-Starlight-Chaser" class="btn btn-outline" target="_blank">
-                <span class="material-icons">code</span>
+                <span class="fluent-icon" data-icon="code"></span>
                 访问 GitHub
             </a>
         </div>

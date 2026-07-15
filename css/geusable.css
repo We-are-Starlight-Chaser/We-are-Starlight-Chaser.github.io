@@ -2,204 +2,211 @@
  * [geusable.css] - 可复用通用样式文件
  * We Are Starlight Chaser
  * 
- * 此文件包含网站中可复用的通用样式类
+ * Fluent Design System 组件样式
  * 包括按钮、卡片、阴影、圆角、动画等
  */
 
 /* ============================================
-   阴影系统 - Material Design Elevation
+   Fluent Design 基础样式
    ============================================ */
 
-:root {
-    /* 阴影层级 */
-    --md-elevation-0: none;
-    --md-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    --md-elevation-2: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
-    --md-elevation-3: 0 6px 12px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10);
-    --md-elevation-4: 0 10px 20px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.10);
-    --md-elevation-5: 0 15px 30px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.10);
+/* Fluent Design SVG 图标样式 */
+.fluent-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    line-height: 1;
 }
 
-/* ============================================
-   圆角系统 - Material Design Shape
-   ============================================ */
-
-:root {
-    --md-radius-none: 0;
-    --md-radius-extra-small: 4px;
-    --md-radius-small: 8px;
-    --md-radius-medium: 12px;
-    --md-radius-large: 16px;
-    --md-radius-extra-large: 28px;
-    --md-radius-full: 50%;
+.fluent-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
 }
 
-/* ============================================
-   间距系统 - Material Design Spacing
-   ============================================ */
-
-:root {
-    --md-space-0: 0;
-    --md-space-1: 4px;
-    --md-space-2: 8px;
-    --md-space-3: 12px;
-    --md-space-4: 16px;
-    --md-space-5: 20px;
-    --md-space-6: 24px;
-    --md-space-8: 32px;
-    --md-space-10: 40px;
-    --md-space-12: 48px;
-    --md-space-16: 64px;
-    --md-space-20: 80px;
-}
+/* Fluent Design 使用 Segoe UI Variable 作为主要字体 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
 
 /* ============================================
-   按钮样式 - Material Design Buttons
+   按钮样式 - Fluent Design Buttons
    ============================================ */
 
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--md-space-2);
-    padding: 12px 24px;
-    border-radius: var(--md-radius-medium);
-    font-family: 'Roboto', 'Noto Sans SC', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.5;
+    gap: 8px;
+    padding: 5px 12px;
+    min-height: 32px;
+    border-radius: 4px;
+    font-family: 'Segoe UI Variable', 'Segoe UI', 'Noto Sans SC', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
     text-decoration: none;
     text-transform: none;
-    letter-spacing: 0.025em;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    border: none;
+    letter-spacing: normal;
+    transition: background-color var(--fluent-duration-fast) var(--fluent-easing),
+                border-color var(--fluent-duration-fast) var(--fluent-easing),
+                color var(--fluent-duration-fast) var(--fluent-easing),
+                box-shadow var(--fluent-duration-fast) var(--fluent-easing);
+    border: 1px solid transparent;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     white-space: nowrap;
+    user-select: none;
 }
 
-/* Filled Button - 填充按钮 */
+/* Primary Button - 主要按钮 */
 .btn-filled {
-    background-color: var(--md-primary);
-    color: var(--md-on-primary);
-    box-shadow: var(--md-elevation-1);
+    background-color: var(--fluent-brand);
+    color: var(--fluent-neutral-foreground-on-brand);
+    border-color: var(--fluent-brand);
 }
 
 .btn-filled:hover {
-    background-color: var(--md-primary);
-    box-shadow: var(--md-elevation-2);
-    transform: translateY(-1px);
+    background-color: var(--fluent-brand-hover);
+    border-color: var(--fluent-brand-hover);
 }
 
 .btn-filled:active {
-    box-shadow: var(--md-elevation-0);
-    transform: translateY(0);
+    background-color: var(--fluent-brand-pressed);
+    border-color: var(--fluent-brand-pressed);
 }
 
-/* Tonal Button - 色调按钮 */
+.btn-filled:focus-visible {
+    outline: 2px solid var(--fluent-neutral-foreground-on-brand);
+    outline-offset: 1px;
+}
+
+/* Secondary Button - 次要按钮 */
 .btn-tonal {
-    background-color: var(--md-secondary-container);
-    color: var(--md-on-secondary-container);
+    background-color: var(--fluent-neutral-background-tertiary);
+    color: var(--fluent-neutral-foreground-primary);
+    border-color: var(--fluent-neutral-stroke-rest);
 }
 
 .btn-tonal:hover {
-    background-color: var(--md-secondary-container);
-    box-shadow: var(--md-elevation-1);
-    transform: translateY(-1px);
+    background-color: var(--fluent-neutral-background-quaternary);
+    border-color: var(--fluent-neutral-stroke-hover);
 }
 
-/* Outlined Button - 轮廓按钮 */
+.btn-tonal:active {
+    background-color: var(--fluent-neutral-background-solid);
+    border-color: var(--fluent-neutral-stroke-pressed);
+}
+
+/* Outline Button - 轮廓按钮 */
 .btn-outline {
     background: transparent;
-    color: var(--md-primary);
-    border: 1px solid var(--md-outline);
+    color: var(--fluent-brand);
+    border-color: var(--fluent-neutral-stroke-rest);
 }
 
 .btn-outline:hover {
-    background-color: var(--md-primary-8);
-    border-color: var(--md-primary);
+    background-color: var(--fluent-neutral-background-tertiary);
+    border-color: var(--fluent-neutral-stroke-hover);
 }
 
-/* Text Button - 文本按钮 */
+.btn-outline:active {
+    background-color: var(--fluent-neutral-background-quaternary);
+    border-color: var(--fluent-neutral-stroke-pressed);
+}
+
+/* Subtle Button - 微妙按钮 */
 .btn-text {
     background: transparent;
-    color: var(--md-primary);
-    padding: 12px 16px;
+    color: var(--fluent-brand);
+    padding: 5px 8px;
+    border-color: transparent;
 }
 
 .btn-text:hover {
-    background-color: var(--md-primary-8);
+    background-color: var(--fluent-brand-alpha-8);
 }
 
-/* Elevated Button - 凸起按钮 */
+.btn-text:active {
+    background-color: var(--fluent-brand-alpha-12);
+}
+
+/* Transparent Button - 透明按钮 */
 .btn-elevated {
-    background-color: var(--md-surface);
-    color: var(--md-primary);
-    box-shadow: var(--md-elevation-1);
+    background-color: var(--fluent-neutral-background-secondary);
+    color: var(--fluent-neutral-foreground-primary);
+    box-shadow: var(--fluent-shadow-4);
 }
 
 .btn-elevated:hover {
-    box-shadow: var(--md-elevation-2);
-    transform: translateY(-1px);
+    box-shadow: var(--fluent-shadow-8);
+    background-color: var(--fluent-neutral-background-tertiary);
+}
+
+.btn-elevated:active {
+    box-shadow: var(--fluent-shadow-4);
+    background-color: var(--fluent-neutral-background-quaternary);
 }
 
 /* 按钮尺寸变体 */
 .btn-small {
-    padding: 8px 16px;
-    font-size: 0.875rem;
+    padding: 2px 8px;
+    min-height: 24px;
+    font-size: 12px;
 }
 
 .btn-large {
-    padding: 16px 32px;
-    font-size: 1.125rem;
+    padding: 8px 16px;
+    min-height: 40px;
+    font-size: 14px;
 }
 
 /* 禁用状态 */
 .btn:disabled,
 .btn.disabled {
-    opacity: 0.38;
+    background-color: var(--fluent-neutral-alpha-8);
+    color: var(--fluent-neutral-foreground-disabled);
+    border-color: var(--fluent-neutral-stroke-disabled);
     cursor: not-allowed;
     pointer-events: none;
+    box-shadow: none;
 }
 
 /* ============================================
-   卡片样式 - Material Design Cards
+   卡片样式 - Fluent Design Cards
    ============================================ */
 
 .card {
-    background-color: var(--md-surface);
-    border-radius: var(--md-radius-large);
-    padding: var(--md-space-6);
-    box-shadow: var(--md-elevation-1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--fluent-neutral-background-secondary);
+    border-radius: 4px;
+    padding: 16px;
+    box-shadow: var(--fluent-shadow-4);
+    transition: box-shadow var(--fluent-duration-fast) var(--fluent-easing),
+                background-color var(--fluent-duration-fast) var(--fluent-easing);
+    border: 1px solid var(--fluent-neutral-stroke-rest);
     position: relative;
     overflow: hidden;
 }
 
-[data-theme="light"] .card {
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--md-elevation-3);
-    border-color: var(--md-primary-30);
+    box-shadow: var(--fluent-shadow-8);
 }
 
 /* 卡片变体 */
 .card-filled {
-    background-color: var(--md-surface-variant);
+    background-color: var(--fluent-neutral-background-tertiary);
+    box-shadow: none;
 }
 
 .card-outlined {
     box-shadow: none;
-    border: 1px solid var(--md-outline);
+    border: 1px solid var(--fluent-neutral-stroke-rest);
 }
 
 .card-elevated {
-    box-shadow: var(--md-elevation-2);
+    box-shadow: var(--fluent-shadow-8);
 }
 
 /* ============================================
@@ -207,93 +214,96 @@
    ============================================ */
 
 .card-icon {
-    width: 48px;
-    height: 48px;
-    background: var(--md-primary-container);
-    border-radius: var(--md-radius-medium);
+    width: 44px;
+    height: 44px;
+    background: var(--fluent-brand-background);
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: var(--md-space-4);
-    color: var(--md-on-primary-container);
+    margin-bottom: 12px;
+    color: var(--fluent-brand);
 }
 
 .card-icon-large {
-    width: 64px;
-    height: 64px;
-    font-size: 2rem;
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
 }
 
 /* ============================================
-   徽章样式 - Material Design Badges
+   徽章样式 - Fluent Design Badges
    ============================================ */
 
 .badge {
     display: inline-flex;
     align-items: center;
-    gap: var(--md-space-1);
-    padding: 4px 12px;
-    border-radius: var(--md-radius-full);
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0.02em;
 }
 
 .badge-filled {
-    background-color: var(--md-primary);
-    color: var(--md-on-primary);
+    background-color: var(--fluent-brand);
+    color: var(--fluent-neutral-foreground-on-brand);
 }
 
 .badge-tonal {
-    background-color: var(--md-secondary-container);
-    color: var(--md-on-secondary-container);
+    background-color: var(--fluent-brand-background);
+    color: var(--fluent-brand-foreground);
 }
 
 .badge-outlined {
     background: transparent;
-    color: var(--md-primary);
-    border: 1px solid var(--md-outline);
+    color: var(--fluent-brand);
+    border: 1px solid var(--fluent-brand);
 }
 
 /* 角色徽章 */
 .role-badge {
     display: inline-block;
-    padding: 4px 12px;
-    background: var(--md-tertiary);
-    color: white;
-    border-radius: var(--md-radius-small);
-    font-size: 0.75rem;
-    font-weight: 500;
+    padding: 2px 8px;
+    background: var(--fluent-brand);
+    color: var(--fluent-neutral-foreground-on-brand);
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 /* 技术标签 */
 .tech-tag {
     display: inline-flex;
-    padding: 4px 12px;
-    background: var(--md-primary-20);
-    color: var(--md-primary-container);
-    border-radius: var(--md-radius-large);
-    font-size: 0.75rem;
-    font-weight: 500;
+    padding: 2px 8px;
+    background: var(--fluent-neutral-background-tertiary);
+    color: var(--fluent-neutral-foreground-secondary);
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    border: 1px solid var(--fluent-neutral-stroke-rest);
 }
 
 [data-theme="light"] .tech-tag {
-    color: var(--md-primary);
+    color: var(--fluent-neutral-foreground-secondary);
+    background: var(--fluent-neutral-background-tertiary);
+    border-color: var(--fluent-neutral-stroke-rest);
 }
 
 /* ============================================
-   加载动画 - Skeleton Loading
+   加载动画 - Fluent Design Loading
    ============================================ */
 
 .skeleton {
     background: linear-gradient(90deg,
-            var(--md-surface-variant) 25%,
-            var(--md-primary-12) 50%,
-            var(--md-surface-variant) 75%);
+            var(--fluent-neutral-background-tertiary) 25%,
+            var(--fluent-neutral-background-quaternary) 50%,
+            var(--fluent-neutral-background-tertiary) 75%);
     background-size: 200% 100%;
-    animation: skeleton-loading 1.5s infinite;
-    border-radius: var(--md-radius-small);
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+    border-radius: 4px;
 }
 
 @keyframes skeleton-loading {
@@ -307,45 +317,68 @@
 }
 
 /* ============================================
-   涟漪效果 - Ripple Effect
+   Fluent Design 交互效果
    ============================================ */
 
-.ripple {
+/* Reveal Effect - Fluent Design 特有的揭示效果 */
+.reveal-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.reveal-effect::after {
+    content: '';
     position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.6);
-    transform: scale(0);
-    animation: ripple-animation 0.6s ease-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                rgba(255, 255, 255, 0.1) 0%, 
+                transparent 60%);
+    opacity: 0;
+    transition: opacity var(--fluent-duration-fast) var(--fluent-easing);
     pointer-events: none;
 }
 
-@keyframes ripple-animation {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
+.reveal-effect:hover::after {
+    opacity: 1;
 }
 
 /* ============================================
-   滚动条样式
+   滚动条样式 - Fluent Design Scrollbar
    ============================================ */
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--md-background);
+    background: var(--fluent-neutral-background-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--md-primary);
-    border-radius: 4px;
+    background: var(--fluent-neutral-foreground-tertiary);
+    border-radius: 10px;
+    border: 2px solid var(--fluent-neutral-background-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #7B67B8;
+    background: var(--fluent-neutral-foreground-secondary);
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* ============================================
+   Fluent Design Focus Ring
+   ============================================ */
+
+:focus-visible {
+    outline: 2px solid var(--fluent-brand);
+    outline-offset: 1px;
 }
 
 /* ============================================
@@ -403,21 +436,21 @@
     overflow: hidden;
 }
 
-/* 渐变文字 */
+/* 渐变文字 - Fluent Design */
 .gradient-text {
-    background: linear-gradient(135deg, #EADDFF 0%, #9B7BFF 50%, #6750A4 100%);
+    background: linear-gradient(135deg, var(--fluent-brand) 0%, var(--fluent-brand-60) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-/* 玻璃态效果 */
+/* Fluent Design 毛玻璃效果 */
 .glass-effect {
-    background-color: rgba(28, 27, 31, 0.85);
+    background-color: rgba(27, 27, 27, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
 
 [data-theme="light"] .glass-effect {
-    background-color: rgba(254, 247, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.85);
 }

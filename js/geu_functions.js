@@ -192,14 +192,16 @@ StarlightChaser.utils.storage = {
  * @param {number} duration - 显示时长（毫秒）
  */
 StarlightChaser.ui.showToast = function (message, type = 'info', duration = 3000) {
+    const iconName = type === 'success' ? 'checkmark_circle' : type === 'error' ? 'search' : type === 'warning' ? 'weather_sunny' : 'search';
     const toast = $(`
         <div class="toast toast-${type}">
-            <span class="material-icons">${type === 'success' ? 'check_circle' : type === 'error' ? 'error' : type === 'warning' ? 'warning' : 'info'}</span>
+            <span class="fluent-icon" data-icon="${iconName}"></span>
             <span>${message}</span>
         </div>
     `);
 
     $('body').append(toast);
+    loadFluentIcons();
 
     setTimeout(() => {
         toast.addClass('show');
@@ -349,12 +351,139 @@ StarlightChaser.api.loadJSON = function (path) {
 })(jQuery);
 
 // ============================================
+// SVG 图标加载
+// ============================================
+
+/**
+ * Fluent Design SVG 图标映射表
+ * key: 图标名称, value: SVG 文件路径
+ */
+const FLUENT_ICON_MAP = {
+    'arrow_left': '/icons/ic_fluent_arrow_left_24_regular.svg',
+    'arrow_right': '/icons/ic_fluent_arrow_right_24_regular.svg',
+    'arrow_forward': '/icons/ic_fluent_arrow_forward_24_regular.svg',
+    'arrow_download': '/icons/ic_fluent_arrow_download_24_regular.svg',
+    'arrow_sync': '/icons/ic_fluent_arrow_sync_24_regular.svg',
+    'arrow_clockwise': '/icons/ic_fluent_arrow_clockwise_24_regular.svg',
+    'checkmark_circle': '/icons/ic_fluent_checkmark_circle_24_regular.svg',
+    'code': '/icons/ic_fluent_code_24_regular.svg',
+    'folder': '/icons/ic_fluent_folder_24_regular.svg',
+    'folder_open': '/icons/ic_fluent_folder_open_24_regular.svg',
+    'heart': '/icons/ic_fluent_heart_24_regular.svg',
+    'home': '/icons/ic_fluent_home_24_regular.svg',
+    'list': '/icons/ic_fluent_list_24_regular.svg',
+    'mail': '/icons/ic_fluent_mail_24_regular.svg',
+    'people': '/icons/ic_fluent_people_24_regular.svg',
+    'person_add': '/icons/ic_fluent_person_add_24_regular.svg',
+    'search': '/icons/ic_fluent_search_24_regular.svg',
+    'send': '/icons/ic_fluent_send_24_regular.svg',
+    'server': '/icons/ic_fluent_server_24_regular.svg',
+    'star': '/icons/ic_fluent_star_24_regular.svg',
+    'weather_sunny': '/icons/ic_fluent_weather_sunny_24_regular.svg',
+};
+
+/**
+ * SVG 图标缓存
+ */
+const svgIconCache = {};
+
+/**
+ * 加载单个 SVG 图标文件
+ * @param {string} iconName - 图标名称
+ * @returns {Promise<string>} SVG 内容
+ */
+async function loadSVGIcon(iconName) {
+    if (svgIconCache[iconName]) {
+        return svgIconCache[iconName];
+    }
+
+    const path = FLUENT_ICON_MAP[iconName];
+    if (!path) {
+        console.warn(`图标 "${iconName}" 未在 FLUENT_ICON_MAP 中定义`);
+        return '';
+    }
+
+    try {
+        const response = await fetch(path);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        let svg = await response.text();
+        svg = svg.replace(/fill="#212121"/g, 'fill="currentColor"');
+        svgIconCache[iconName] = svg;
+        return svg;
+    } catch (err) {
+        console.error(`加载图标 "${iconName}" 失败:`, err);
+        return '';
+    }
+}
+
+/**
+ * 替换所有 .fluent-icon 元素为内联 SVG
+ * 元素需带有 data-icon="图标名称" 属性
+ */
+// 简单的内存缓存，避免重复请求相同图标
+const iconCache = new Map();
+
+async function loadFluentIcons() {
+  const elements = document.querySelectorAll('.fluent-icon[data-icon]');
+  if (!elements.length) return;
+
+  // 第一阶段：并发加载 SVG（纯数据获取，不涉及 DOM）
+  const loadTasks = Array.from(elements).map(async (el) => {
+    const iconName = el.getAttribute('data-icon');
+    try {
+      let svg = iconCache.get(iconName);
+      if (!svg) {
+        svg = await loadSVGIcon(iconName);
+        if (svg) iconCache.set(iconName, svg);
+      }
+      return { el, svg };
+    } catch (err) {
+      console.warn(`[FluentIcon] Failed to load "${iconName}":`, err);
+      return { el, svg: null };
+    }
+  });
+
+  const results = await Promise.all(loadTasks);
+
+  // 第二阶段：同步批量替换 DOM（避免并发 DOM 操作）
+  for (const { el, svg } of results) {
+    if (!svg || !el.parentNode) continue;
+
+    const wrapper = document.createElement('span');
+    wrapper.className = el.className;
+
+    // 复制所有需要保留的属性
+    const attrsToCopy = ['style', 'id', 'title', 'role', 'aria-label', 'tabindex'];
+    for (const attr of attrsToCopy) {
+      if (el.hasAttribute(attr)) {
+        wrapper.setAttribute(attr, el.getAttribute(attr));
+      }
+    }
+
+    // 安全注入：使用 DOMParser 代替 innerHTML
+    const parsed = new DOMParser().parseFromString(svg, 'image/svg+xml');
+    const svgEl = parsed.querySelector('svg');
+    if (svgEl) {
+      wrapper.appendChild(svgEl);
+    } else {
+      // fallback：如果解析失败，至少保留文本提示
+      wrapper.textContent = `[${el.getAttribute('data-icon')}]`;
+    }
+
+    el.parentNode.replaceChild(wrapper, el);
+  }
+}
+
+// ============================================
 // 初始化
 // ============================================
 
-$(document).ready(function () {
+$(document).ready(async function () {
     // 为所有按钮和卡片添加涟漪效果
     $('.btn, .card, .nav-link').ripple();
+
+    // 加载 SVG 图标
+    await loadFluentIcons();
 
     console.log('🌟 Starlight Chaser - 通用函数库已加载');
 });

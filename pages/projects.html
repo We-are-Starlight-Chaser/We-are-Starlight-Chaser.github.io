@@ -16,12 +16,9 @@
     <meta name="keywords" content="Starlight Chaser, 逐星者, 开源项目, SMSM, GitHub">
     <meta name="author" content="We Are Starlight Chaser">
 
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <!-- Google Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- 主样式文件 -->
@@ -37,23 +34,20 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 120px 24px 48px;
+            padding: 80px 24px 32px;
             position: relative;
         }
 
         .projects-hero h1 {
             font-size: clamp(2rem, 6vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #EADDFF 0%, #9B7BFF 50%, #6750A4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--fluent-neutral-foreground-primary);
         }
 
         .projects-hero p {
-            font-size: 1.25rem;
-            color: var(--md-on-surface-variant);
+            font-size: 1rem;
+            color: var(--fluent-neutral-foreground-secondary);
             max-width: 600px;
         }
 
@@ -61,36 +55,35 @@
         .projects-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 24px;
+            gap: 16px;
             max-width: 800px;
-            margin: 48px auto;
+            margin: 32px auto;
             padding: 0 24px;
         }
 
         .stat-card {
-            background: var(--md-surface);
-            border-radius: var(--md-radius-large);
-            padding: 24px;
+            background: var(--fluent-neutral-background-secondary);
+            border-radius: 4px;
+            padding: 16px;
             text-align: center;
-            border: 1px solid var(--md-outline-variant);
-            transition: all 0.3s ease;
+            border: 1px solid var(--fluent-neutral-stroke-rest);
+            transition: box-shadow var(--fluent-duration-fast) var(--fluent-easing);
         }
 
         .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--md-elevation-2);
+            box-shadow: var(--fluent-shadow-8);
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--md-primary);
-            margin-bottom: 8px;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--fluent-brand);
+            margin-bottom: 4px;
         }
 
         .stat-label {
-            font-size: 0.875rem;
-            color: var(--md-on-surface-variant);
+            font-size: 12px;
+            color: var(--fluent-neutral-foreground-secondary);
         }
 
         /* 项目分类标签 */
@@ -98,36 +91,39 @@
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
         }
 
         .project-tab {
-            padding: 8px 20px;
+            padding: 4px 12px;
             background: transparent;
-            color: var(--md-on-surface-variant);
-            border: 1px solid var(--md-outline);
-            border-radius: var(--md-radius-full);
-            font-size: 0.875rem;
-            font-weight: 500;
+            color: var(--fluent-neutral-foreground-secondary);
+            border: 1px solid var(--fluent-neutral-stroke-rest);
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 400;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: background-color var(--fluent-duration-fast) var(--fluent-easing),
+                        color var(--fluent-duration-fast) var(--fluent-easing),
+                        border-color var(--fluent-duration-fast) var(--fluent-easing);
         }
 
         .project-tab:hover {
-            background: var(--md-primary-8);
-            color: var(--md-primary);
+            background: var(--fluent-brand-alpha-8);
+            color: var(--fluent-brand);
+            border-color: var(--fluent-brand);
         }
 
         .project-tab.active {
-            background: var(--md-primary);
-            color: var(--md-on-primary);
-            border-color: var(--md-primary);
+            background: var(--fluent-brand);
+            color: var(--fluent-neutral-foreground-on-brand);
+            border-color: var(--fluent-brand);
         }
 
         /* 项目网格 */
         .projects-section {
-            padding: 80px 24px;
+            padding: 48px 24px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -135,46 +131,29 @@
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 24px;
+            gap: 16px;
         }
 
         /* 项目卡片 */
         .project-card {
-            background: var(--md-surface);
-            border-radius: var(--md-radius-large);
-            padding: 28px;
-            border: 1px solid var(--md-outline-variant);
-            transition: all 0.3s ease;
+            background: var(--fluent-neutral-background-secondary);
+            border-radius: 4px;
+            padding: 20px;
+            border: 1px solid var(--fluent-neutral-stroke-rest);
+            transition: box-shadow var(--fluent-duration-fast) var(--fluent-easing),
+                        background-color var(--fluent-duration-fast) var(--fluent-easing);
             position: relative;
             overflow: hidden;
             cursor: pointer;
         }
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--md-primary), #9B7BFF);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
         .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--md-elevation-3);
-            border-color: var(--md-primary-30);
+            box-shadow: var(--fluent-shadow-8);
+            background-color: var(--fluent-neutral-background-tertiary);
         }
 
         .project-card.featured {
-            border-color: var(--md-primary-30);
-            background: linear-gradient(145deg, var(--md-surface), var(--md-primary-8));
+            border-color: var(--fluent-brand);
         }
 
         .project-card.featured::after {
@@ -182,43 +161,43 @@
             position: absolute;
             top: 12px;
             right: 12px;
-            padding: 4px 12px;
-            background: var(--md-primary);
-            color: var(--md-on-primary);
-            border-radius: var(--md-radius-extra-large);
-            font-size: 0.75rem;
-            font-weight: 500;
+            padding: 2px 8px;
+            background: var(--fluent-brand);
+            color: var(--fluent-neutral-foreground-on-brand);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
         }
 
         .project-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .project-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--md-primary-container);
-            border-radius: var(--md-radius-medium);
+            width: 40px;
+            height: 40px;
+            background: var(--fluent-brand-background);
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--md-on-primary-container);
+            color: var(--fluent-brand);
         }
 
         .project-name {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 600;
-            color: var(--md-on-surface);
+            color: var(--fluent-neutral-foreground-primary);
             flex: 1;
         }
 
         .project-description {
-            color: var(--md-on-surface-variant);
-            margin-bottom: 20px;
-            line-height: 1.7;
+            color: var(--fluent-neutral-foreground-secondary);
+            margin-bottom: 16px;
+            line-height: 1.6;
             min-height: 60px;
         }
 
@@ -234,52 +213,52 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.875rem;
-            color: var(--md-on-surface-variant);
+            font-size: 12px;
+            color: var(--fluent-neutral-foreground-secondary);
         }
 
         .language-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
         }
 
         .project-stats {
             display: inline-flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
 
         .project-stat {
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            font-size: 0.875rem;
-            color: var(--md-on-surface-variant);
-            transition: color 0.2s;
+            font-size: 12px;
+            color: var(--fluent-neutral-foreground-secondary);
+            transition: color var(--fluent-duration-fast) var(--fluent-easing);
         }
 
         .project-stat:hover {
-            color: var(--md-primary);
+            color: var(--fluent-brand);
         }
 
-        .project-stat .material-icons {
-            font-size: 18px;
+        .project-stat .fluent-icon {
+            font-size: 16px;
         }
 
-        .project-stat-star .material-icons {
+        .project-stat-star .fluent-icon {
             color: #FFD700;
         }
 
-        .project-stat-fork .material-icons {
-            color: #9B7BFF;
+        .project-stat-fork .fluent-icon {
+            color: var(--fluent-brand);
         }
 
         /* Star 数量动画 */
         .star-count,
         .fork-count {
             font-variant-numeric: tabular-nums;
-            transition: all 0.3s ease;
+            transition: all var(--fluent-duration-fast) var(--fluent-easing);
         }
 
         .star-count-updating {
@@ -291,8 +270,8 @@
         .projects-refresh {
             display: flex;
             justify-content: center;
-            margin-top: 40px;
-            gap: 16px;
+            margin-top: 32px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -316,7 +295,7 @@
             border-color: var(--md-primary);
         }
 
-        .btn-refresh.spinning .material-icons {
+        .btn-refresh.spinning .fluent-icon {
             animation: spin 1s linear infinite;
         }
 
@@ -332,36 +311,38 @@
 
         /* 贡献引导 */
         .contribute-section {
-            padding: 80px 24px;
+            padding: 48px 24px;
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
 
         .contribute-card {
-            background: linear-gradient(145deg, var(--md-surface), var(--md-primary-8));
-            border-radius: var(--md-radius-large);
-            padding: 48px 32px;
-            border: 1px solid var(--md-primary-20);
+            background: var(--fluent-neutral-background-secondary);
+            border-radius: 4px;
+            padding: 32px;
+            border: 1px solid var(--fluent-neutral-stroke-rest);
+            box-shadow: var(--fluent-shadow-4);
         }
 
         .contribute-card h2 {
-            font-size: 2rem;
-            margin-bottom: 16px;
-            color: var(--md-on-surface);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--fluent-neutral-foreground-primary);
+            font-weight: 600;
         }
 
         .contribute-card p {
-            color: var(--md-on-surface-variant);
+            color: var(--fluent-neutral-foreground-secondary);
             margin-bottom: 24px;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         .contribute-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 24px;
-            margin: 32px 0;
+            gap: 16px;
+            margin: 24px 0;
             text-align: left;
         }
 
@@ -372,28 +353,30 @@
         }
 
         .contribute-step-number {
-            width: 32px;
-            height: 32px;
-            background: var(--md-primary);
-            color: var(--md-on-primary);
+            width: 28px;
+            height: 28px;
+            background: var(--fluent-brand);
+            color: var(--fluent-neutral-foreground-on-brand);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 12px;
             flex-shrink: 0;
         }
 
         .contribute-step-content h4 {
-            font-size: 1rem;
+            font-size: 14px;
             margin-bottom: 4px;
-            color: var(--md-on-surface);
+            color: var(--fluent-neutral-foreground-primary);
+            font-weight: 600;
         }
 
         .contribute-step-content p {
-            font-size: 0.875rem;
+            font-size: 12px;
             margin: 0;
+            line-height: 1.4;
         }
 
         /* 响应式 */
@@ -421,7 +404,7 @@
     <header class="app-bar" id="appBar">
         <a href="../index.html" class="brand">
             <div class="brand-icon">
-                <span class="material-icons">rocket_launch</span>
+                <span class="fluent-icon" data-icon="send"></span>
             </div>
             <span>Starlight Chaser</span>
         </a>
@@ -432,13 +415,13 @@
             <a href="./projects.html" class="nav-link">其他项目</a>
             <a href="../index.html#news" class="nav-link">动态</a>
             <a href="https://github.com/We-Are-Starlight-Chaser" class="nav-link" target="_blank">
-                <span class="material-icons" style="font-size: 18px;">open_in_new</span>
+                <span class="fluent-icon" data-icon="arrow_forward" style="font-size: 18px;"></span>
                 GitHub
             </a>
         </nav>
 
         <button class="mobile-menu-btn" id="mobileMenuBtn">
-            <span class="material-icons">menu</span>
+            <span class="fluent-icon" data-icon="list"></span>
         </button>
     </header>
 
@@ -483,11 +466,11 @@
         <!-- 刷新按钮 -->
         <div class="projects-refresh">
             <button class="btn-refresh" id="refreshProjects">
-                <span class="material-icons">refresh</span>
+                <span class="fluent-icon" data-icon="arrow_sync"></span>
                 刷新数据
             </button>
             <a href="https://github.com/We-Are-Starlight-Chaser" class="btn btn-filled" target="_blank">
-                <span class="material-icons">open_in_new</span>
+                <span class="fluent-icon" data-icon="arrow_forward"></span>
                 查看全部
             </a>
         </div>
@@ -496,8 +479,8 @@
     <!-- 贡献引导 -->
     <section class="contribute-section">
         <div class="contribute-card">
-            <span class="material-icons"
-                style="font-size: 48px; color: var(--md-primary); margin-bottom: 16px;">volunteer_activism</span>
+            <span class="fluent-icon" data-icon="heart"
+                style="font-size: 48px; color: var(--fluent-brand); margin-bottom: 16px;"></span>
             <h2>参与贡献</h2>
             <p>我们欢迎任何形式的贡献，无论是代码、文档、问题反馈还是功能建议</p>
 
@@ -533,7 +516,7 @@
             </div>
 
             <a href="https://github.com/We-Are-Starlight-Chaser" class="btn btn-filled" target="_blank">
-                <span class="material-icons">code</span>
+                <span class="fluent-icon" data-icon="code"></span>
                 开始贡献
             </a>
         </div>
@@ -561,7 +544,7 @@
 
     <!-- 主题切换按钮 -->
     <button class="theme-toggle" id="themeToggle" title="切换主题">
-        <span class="material-icons" id="themeIcon">light_mode</span>
+        <span class="fluent-icon" id="themeIcon" data-icon="weather_sunny"></span>
     </button>
 
     <!-- jQuery 库 -->
@@ -709,12 +692,10 @@
                 const savedTheme = StarlightChaser.utils.storage.get('theme', 'dark');
                 App.theme = savedTheme;
                 $('html').attr('data-theme', App.theme);
-                $('#themeIcon').text(App.theme === 'dark' ? 'light_mode' : 'dark_mode');
 
                 $('#themeToggle').on('click', function () {
                     App.theme = App.theme === 'dark' ? 'light' : 'dark';
                     $('html').attr('data-theme', App.theme);
-                    $('#themeIcon').text(App.theme === 'dark' ? 'light_mode' : 'dark_mode');
                     StarlightChaser.utils.storage.set('theme', App.theme);
                 });
             }
@@ -779,7 +760,7 @@
                          data-repo="${project.github_url}">
                         <div class="project-header">
                             <div class="project-icon">
-                                <span class="material-icons">folder</span>
+                                <span class="fluent-icon" data-icon="folder"></span>
                             </div>
                             <div class="project-name">${project.name}</div>
                         </div>
@@ -794,13 +775,13 @@
                             <div class="project-stats">
                                 ${data.show_star_count ? `
                                     <span class="project-stat project-stat-star">
-                                        <span class="material-icons">star</span>
+                                        <span class="fluent-icon" data-icon="star"></span>
                                         <span class="star-count" data-project="${project.id}">-</span>
                                     </span>
                                 ` : ''}
                                 ${data.show_fork_count ? `
                                     <span class="project-stat project-stat-fork">
-                                        <span class="material-icons">fork_right</span>
+                                        <span class="fluent-icon" data-icon="arrow_forward"></span>
                                         <span class="fork-count" data-project="${project.id}">-</span>
                                     </span>
                                 ` : ''}
@@ -810,6 +791,9 @@
                 `).join('');
 
                 $grid.html(html);
+
+                // 加载动态生成的 SVG 图标
+                loadFluentIcons();
 
                 // 绑定点击事件
                 $grid.find('.project-card').on('click', function () {

@@ -1,71 +1,76 @@
 /**
  * [color.css] - 颜色定义样式文件
  * We Are Starlight Chaser
+ * 
+ * Fluent Design System 颜色主题
  */
 
 /* ============================================
-   CSS 变量定义 - Material Design 3 主题色
+   CSS 变量定义 - Fluent Design 主题色
    ============================================ */
 
 :root {
-    /* Primary - 鸢尾紫 */
-    --md-primary: #6750A4;
-    --md-on-primary: #FFFFFF;
-    --md-primary-container: #EADDFF;
-    --md-on-primary-container: #21005D;
-    --md-primary-fixed: #EADDFF;
-    --md-on-primary-fixed: #21005D;
+    /* Brand - 品牌色 (Fluent Blue) */
+    --fluent-brand: #0078D4;
+    --fluent-brand-hover: #106EBE;
+    --fluent-brand-pressed: #005A9E;
+    --fluent-brand-selected: #E1F0FF;
+    --fluent-brand-background: #E1F0FF;
+    --fluent-brand-foreground: #004578;
 
-    /* Secondary - 柔和紫灰 */
-    --md-secondary: #625B71;
-    --md-on-secondary: #FFFFFF;
-    --md-secondary-container: #E8DEF8;
-    --md-on-secondary-container: #1D192B;
+    /* Status - 状态色 */
+    --fluent-success: #107C10;
+    --fluent-success-background: #DFF6DD;
+    --fluent-warning: #FFB900;
+    --fluent-warning-background: #FFF4CE;
+    --fluent-error: #D13438;
+    --fluent-error-background: #FDE7E9;
+    --fluent-info: #0078D4;
+    --fluent-info-background: #E1F0FF;
 
-    /* Tertiary - 玫瑰棕 */
-    --md-tertiary: #7D5260;
-    --md-on-tertiary: #FFFFFF;
-    --md-tertiary-container: #FFD8E4;
-    --md-on-tertiary-container: #31111D;
+    /* Neutral - 中性色 (Fluent Dark Theme) */
+    --fluent-neutral-background-primary: #1B1B1B;
+    --fluent-neutral-background-secondary: #2D2D2D;
+    --fluent-neutral-background-tertiary: #3D3D3D;
+    --fluent-neutral-background-quaternary: #4D4D4D;
+    --fluent-neutral-background-solid: #1B1B1B;
 
-    /* Error - 错误色 */
-    --md-error: #B3261E;
-    --md-on-error: #FFFFFF;
-    --md-error-container: #F9DEDC;
-    --md-on-error-container: #410E0B;
+    /* Foreground - 前景色 */
+    --fluent-neutral-foreground-primary: #FFFFFF;
+    --fluent-neutral-foreground-secondary: #CAC4D0;
+    --fluent-neutral-foreground-tertiary: #A19F9D;
+    --fluent-neutral-foreground-disabled: #605E5C;
+    --fluent-neutral-foreground-on-brand: #FFFFFF;
+    --fluent-neutral-foreground-subtle: #CAC4D0;
 
-    /* Surface - 表面色 (深色模式默认) */
-    --md-surface: #1C1B1F;
-    --md-surface-dim: #141218;
-    --md-surface-bright: #3B383E;
-    --md-surface-variant: #49454F;
-    --md-on-surface: #E6E1E5;
-    --md-on-surface-variant: #CAC4D0;
-
-    /* Background - 背景色 */
-    --md-background: #141218;
-    --md-on-background: #E6E1E5;
-
-    /* Outline - 轮廓色 */
-    --md-outline: #938F99;
-    --md-outline-variant: #49454F;
+    /* Stroke - 边框色 */
+    --fluent-neutral-stroke-rest: #404040;
+    --fluent-neutral-stroke-hover: #4D4D4D;
+    --fluent-neutral-stroke-pressed: #605E5C;
+    --fluent-neutral-stroke-disabled: #404040;
+    --fluent-neutral-stroke-divider: #404040;
 
     /* Shadow - 阴影 */
-    --md-shadow: #000000;
-
-    /* Scrim - 遮罩 */
-    --md-scrim: #000000;
-
-    /* Inverse - 反色 */
-    --md-inverse-surface: #E6E1E5;
-    --md-inverse-on-surface: #322F35;
-    --md-inverse-primary: #D0BCFF;
+    --fluent-shadow-4: 0px 1.6px 3.6px rgba(0,0,0,0.13), 0px 0.3px 0.9px rgba(0,0,0,0.11);
+    --fluent-shadow-8: 0px 3.2px 7.2px rgba(0,0,0,0.13), 0px 0.6px 1.8px rgba(0,0,0,0.11);
+    --fluent-shadow-16: 0px 6.4px 14.4px rgba(0,0,0,0.13), 0px 1.2px 3.6px rgba(0,0,0,0.11);
+    --fluent-shadow-28: 0px 12.8px 28.8px rgba(0,0,0,0.13), 0px 2.4px 6px rgba(0,0,0,0.11);
+    --fluent-shadow-64: 0px 25.6px 57.6px rgba(0,0,0,0.22), 0px 4.8px 12px rgba(0,0,0,0.18);
 
     /* Custom - 自定义颜色 */
     --star-color: rgba(255, 255, 255, 0.8);
-    --accent-glow: rgba(103, 80, 164, 0.6);
+    --accent-glow: rgba(0, 120, 212, 0.6);
     --github-star-color: #FFD700;
-    --github-fork-color: #9B7BFF;
+    --github-fork-color: #0078D4;
+
+    /* Fluent Transitions */
+    --fluent-duration-fast: 150ms;
+    --fluent-duration-normal: 250ms;
+    --fluent-duration-slow: 400ms;
+    --fluent-easing: cubic-bezier(0.33, 0, 0.67, 1);
+    --fluent-easing-decelerate: cubic-bezier(0, 0, 0, 1);
+    --fluent-easing-accelerate: cubic-bezier(1, 0, 1, 1);
+    --fluent-easing-standard: cubic-bezier(0.8, 0, 0.2, 1);
 }
 
 /* ============================================
@@ -73,25 +78,71 @@
    ============================================ */
 
 [data-theme="light"] {
-    /* Surface - 表面色 (浅色模式) */
-    --md-surface: #FEF7FF;
-    --md-surface-dim: #DED8E1;
-    --md-surface-bright: #FEF7FF;
-    --md-surface-variant: #E7E0EC;
-    --md-on-surface: #1C1B1F;
-    --md-on-surface-variant: #49454F;
+    /* Neutral - 中性色 (Fluent Light Theme) */
+    --fluent-neutral-background-primary: #FFFFFF;
+    --fluent-neutral-background-secondary: #FAFAFA;
+    --fluent-neutral-background-tertiary: #F5F5F5;
+    --fluent-neutral-background-quaternary: #F0F0F0;
+    --fluent-neutral-background-solid: #FFFFFF;
 
-    /* Background - 背景色 */
-    --md-background: #FFFFFF;
-    --md-on-background: #1C1B1F;
+    /* Foreground - 前景色 */
+    --fluent-neutral-foreground-primary: #242424;
+    --fluent-neutral-foreground-secondary: #616161;
+    --fluent-neutral-foreground-tertiary: #707070;
+    --fluent-neutral-foreground-disabled: #BDBDBD;
+    --fluent-neutral-foreground-on-brand: #FFFFFF;
+    --fluent-neutral-foreground-subtle: #616161;
 
-    /* Outline - 轮廓色 */
-    --md-outline: #79747E;
-    --md-outline-variant: #CAC4D0;
+    /* Stroke - 边框色 */
+    --fluent-neutral-stroke-rest: #D1D1D1;
+    --fluent-neutral-stroke-hover: #C0C0C0;
+    --fluent-neutral-stroke-pressed: #9E9E9E;
+    --fluent-neutral-stroke-disabled: #E0E0E0;
+    --fluent-neutral-stroke-divider: #E0E0E0;
 
     /* Custom - 自定义颜色 */
-    --star-color: rgba(103, 80, 164, 0.3);
-    --accent-glow: rgba(103, 80, 164, 0.4);
+    --star-color: rgba(0, 120, 212, 0.3);
+    --accent-glow: rgba(0, 120, 212, 0.4);
+}
+
+/* ============================================
+   Fluent Design Accent Palette
+   ============================================ */
+
+:root {
+    /* Brand Palette */
+    --fluent-brand-10: #004578;
+    --fluent-brand-20: #005A9E;
+    --fluent-brand-30: #006CBF;
+    --fluent-brand-40: #0078D4;
+    --fluent-brand-50: #2B88D8;
+    --fluent-brand-60: #71AFE5;
+    --fluent-brand-70: #C7E0F4;
+    --fluent-brand-80: #DEECF9;
+    --fluent-brand-90: #EFF6FC;
+    --fluent-brand-100: #F0F6FF;
+
+    /* Neutral Palette */
+    --fluent-neutral-0: #000000;
+    --fluent-neutral-2: #050505;
+    --fluent-neutral-4: #0A0A0A;
+    --fluent-neutral-6: #0E0E0E;
+    --fluent-neutral-8: #141414;
+    --fluent-neutral-10: #1B1B1B;
+    --fluent-neutral-20: #2D2D2D;
+    --fluent-neutral-30: #404040;
+    --fluent-neutral-40: #525252;
+    --fluent-neutral-50: #605E5C;
+    --fluent-neutral-60: #7A7574;
+    --fluent-neutral-70: #9E9E9E;
+    --fluent-neutral-80: #C8C6C4;
+    --fluent-neutral-90: #D2D0CE;
+    --fluent-neutral-92: #E1DFDD;
+    --fluent-neutral-94: #EDEBE9;
+    --fluent-neutral-95: #F3F2F1;
+    --fluent-neutral-96: #F5F5F5;
+    --fluent-neutral-98: #FAFAFA;
+    --fluent-neutral-100: #FFFFFF;
 }
 
 /* ============================================
@@ -99,23 +150,25 @@
    ============================================ */
 
 :root {
-    /* 主色透明度变体 */
-    --md-primary-8: rgba(103, 80, 164, 0.08);
-    --md-primary-12: rgba(103, 80, 164, 0.12);
-    --md-primary-16: rgba(103, 80, 164, 0.16);
-    --md-primary-20: rgba(103, 80, 164, 0.20);
-    --md-primary-30: rgba(103, 80, 164, 0.30);
-    --md-primary-50: rgba(103, 80, 164, 0.50);
+    /* Brand 透明度变体 */
+    --fluent-brand-alpha-8: rgba(0, 120, 212, 0.08);
+    --fluent-brand-alpha-12: rgba(0, 120, 212, 0.12);
+    --fluent-brand-alpha-16: rgba(0, 120, 212, 0.16);
+    --fluent-brand-alpha-20: rgba(0, 120, 212, 0.20);
+    --fluent-brand-alpha-30: rgba(0, 120, 212, 0.30);
+    --fluent-brand-alpha-50: rgba(0, 120, 212, 0.50);
 
-    /* 表面色透明度变体 */
-    --md-surface-8: rgba(28, 27, 31, 0.08);
-    --md-surface-12: rgba(28, 27, 31, 0.12);
-    --md-surface-16: rgba(28, 27, 31, 0.16);
+    /* Neutral 透明度变体 */
+    --fluent-neutral-alpha-8: rgba(27, 27, 27, 0.08);
+    --fluent-neutral-alpha-12: rgba(27, 27, 27, 0.12);
+    --fluent-neutral-alpha-16: rgba(27, 27, 27, 0.16);
+    --fluent-neutral-alpha-20: rgba(27, 27, 27, 0.20);
 
-    /* 浅色模式表面色透明度 */
+    /* 浅色模式透明度 */
     [data-theme="light"] {
-        --md-surface-8: rgba(254, 247, 255, 0.08);
-        --md-surface-12: rgba(254, 247, 255, 0.12);
-        --md-surface-16: rgba(254, 247, 255, 0.16);
+        --fluent-neutral-alpha-8: rgba(255, 255, 255, 0.08);
+        --fluent-neutral-alpha-12: rgba(255, 255, 255, 0.12);
+        --fluent-neutral-alpha-16: rgba(255, 255, 255, 0.16);
+        --fluent-neutral-alpha-20: rgba(255, 255, 255, 0.20);
     }
 }

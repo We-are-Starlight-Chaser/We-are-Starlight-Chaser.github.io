@@ -15,12 +15,9 @@
     <meta name="keywords" content="SMSM, Minecraft, Server Manager, 逐星者, Starlight Chaser">
     <meta name="author" content="We Are Starlight Chaser">
 
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Google Fonts: Roboto for Material Design -->
+    <!-- Google Fonts: Noto Sans SC -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- 主样式文件 -->
@@ -30,7 +27,7 @@
     <style>
         /* 快速链接区域 */
         .quick-links-section {
-            padding: 60px 24px;
+            padding: 48px 24px;
             max-width: 1000px;
             margin: 0 auto;
         }
@@ -38,95 +35,98 @@
         .quick-links-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 48px;
+            gap: 16px;
+            margin-top: 32px;
         }
 
         .quick-link-card {
-            background: var(--md-surface);
-            border-radius: var(--md-radius-large);
-            padding: 32px 24px;
+            background: var(--fluent-neutral-background-secondary);
+            border-radius: 4px;
+            padding: 24px;
             text-align: center;
-            border: 1px solid var(--md-outline-variant);
-            transition: all 0.3s ease;
+            border: 1px solid var(--fluent-neutral-stroke-rest);
+            transition: box-shadow var(--fluent-duration-fast) var(--fluent-easing),
+                        background-color var(--fluent-duration-fast) var(--fluent-easing);
             text-decoration: none;
             color: inherit;
             display: block;
         }
 
         .quick-link-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--md-elevation-3);
-            border-color: var(--md-primary-30);
+            box-shadow: var(--fluent-shadow-8);
+            background-color: var(--fluent-neutral-background-tertiary);
         }
 
-        .quick-link-card .material-icons {
-            font-size: 48px;
-            color: var(--md-primary);
-            margin-bottom: 16px;
+        .quick-link-card .fluent-icon {
+            font-size: 40px;
+            color: var(--fluent-brand);
+            margin-bottom: 12px;
         }
 
         .quick-link-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-            color: var(--md-on-surface);
+            font-size: 1.125rem;
+            margin-bottom: 4px;
+            color: var(--fluent-neutral-foreground-primary);
+            font-weight: 600;
         }
 
         .quick-link-card p {
-            color: var(--md-on-surface-variant);
-            font-size: 0.875rem;
+            color: var(--fluent-neutral-foreground-secondary);
+            font-size: 14px;
         }
 
         /* 项目预览区域 */
         .project-preview-section {
-            padding: 80px 24px;
+            padding: 48px 24px;
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
 
         .project-preview-card {
-            background: linear-gradient(145deg, var(--md-surface), var(--md-primary-8));
-            border-radius: var(--md-radius-large);
-            padding: 48px 32px;
-            border: 1px solid var(--md-primary-20);
+            background: var(--fluent-neutral-background-secondary);
+            border-radius: 4px;
+            padding: 32px;
+            border: 1px solid var(--fluent-neutral-stroke-rest);
             max-width: 800px;
             margin: 0 auto;
+            box-shadow: var(--fluent-shadow-4);
         }
 
         .project-preview-card .project-icon-large {
-            width: 80px;
-            height: 80px;
-            background: var(--md-primary-container);
-            border-radius: var(--md-radius-large);
+            width: 64px;
+            height: 64px;
+            background: var(--fluent-brand-background);
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
+            margin: 0 auto 20px;
         }
 
-        .project-preview-card .project-icon-large .material-icons {
-            font-size: 40px;
-            color: var(--md-on-primary-container);
+        .project-preview-card .project-icon-large .fluent-icon {
+            font-size: 32px;
+            color: var(--fluent-brand);
         }
 
         .project-preview-card h2 {
-            font-size: 2rem;
-            margin-bottom: 16px;
-            color: var(--md-on-surface);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--fluent-neutral-foreground-primary);
+            font-weight: 600;
         }
 
         .project-preview-card p {
-            color: var(--md-on-surface-variant);
+            color: var(--fluent-neutral-foreground-secondary);
             margin-bottom: 24px;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         .project-preview-stats {
             display: flex;
             justify-content: center;
             gap: 32px;
-            margin: 32px 0;
+            margin: 24px 0;
             flex-wrap: wrap;
         }
 
@@ -135,14 +135,14 @@
         }
 
         .preview-stat-value {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            color: var(--md-primary);
+            color: var(--fluent-brand);
         }
 
         .preview-stat-label {
-            font-size: 0.875rem;
-            color: var(--md-on-surface-variant);
+            font-size: 12px;
+            color: var(--fluent-neutral-foreground-secondary);
         }
 
         /* 响应式 */
@@ -162,11 +162,11 @@
     <!-- 星空背景 Canvas -->
     <canvas id="starfield"></canvas>
 
-    <!-- 导航栏 - Material App Bar -->
+    <!-- 导航栏 - Fluent NavigationView -->
     <header class="app-bar" id="appBar">
         <a href="#" class="brand">
             <div class="brand-icon">
-                <span class="material-icons">rocket_launch</span>
+                <span class="fluent-icon" data-icon="send"></span>
             </div>
             <span>Starlight Chaser</span>
         </a>
@@ -177,13 +177,13 @@
             <a href="./pages/projects.html" class="nav-link">其他项目</a>
             <a href="#news" class="nav-link">动态</a>
             <a href="https://github.com/We-Are-Starlight-Chaser" class="nav-link" target="_blank">
-                <span class="material-icons" style="font-size: 18px;">open_in_new</span>
+                <span class="fluent-icon" data-icon="arrow_forward" style="font-size: 18px;"></span>
                 GitHub
             </a>
         </nav>
 
         <button class="mobile-menu-btn" id="mobileMenuBtn">
-            <span class="material-icons">menu</span>
+            <span class="fluent-icon" data-icon="list"></span>
         </button>
     </header>
 
@@ -192,7 +192,7 @@
         <div class="hero-content">
             <!-- Hero 徽章 - 从 JSON 加载 -->
             <div class="hero-badge" id="heroBadge">
-                <span class="material-icons">verified</span>
+                <span class="fluent-icon" data-icon="checkmark_circle"></span>
                 <span>SMSM v1.0 现已发布</span>
             </div>
 
@@ -210,11 +210,11 @@
             </div>
             <div class="hero-actions">
                 <a href="#download" class="btn btn-filled">
-                    <span class="material-icons">download</span>
+                    <span class="fluent-icon" data-icon="arrow_download"></span>
                     立即下载
                 </a>
                 <a href="https://github.com/We-Are-Starlight-Chaser/SMSM" class="btn btn-outline" target="_blank">
-                    <span class="material-icons">code</span>
+                    <span class="fluent-icon" data-icon="code"></span>
                     查看源码
                 </a>
             </div>
@@ -228,17 +228,17 @@
 
         <div class="quick-links-grid">
             <a href="./pages/team.html" class="quick-link-card">
-                <span class="material-icons">groups</span>
+                <span class="fluent-icon" data-icon="people"></span>
                 <h3>关于我们</h3>
                 <p>认识追逐星光的开发者团队</p>
             </a>
             <a href="./pages/projects.html" class="quick-link-card">
-                <span class="material-icons">folder_special</span>
+                <span class="fluent-icon" data-icon="folder_open"></span>
                 <h3>开源项目</h3>
                 <p>查看我们的 GitHub 项目和 Star 数量</p>
             </a>
             <a href="https://github.com/We-Are-Starlight-Chaser" class="quick-link-card" target="_blank">
-                <span class="material-icons">code</span>
+                <span class="fluent-icon" data-icon="code"></span>
                 <h3>GitHub</h3>
                 <p>访问我们的 GitHub 主页</p>
             </a>
@@ -256,7 +256,7 @@
         <div class="project-preview-section">
             <div class="project-preview-card">
                 <div class="project-icon-large">
-                    <span class="material-icons">dns</span>
+                    <span class="fluent-icon" data-icon="server"></span>
                 </div>
                 <h2>Simple Minecraft Server Manager</h2>
                 <p>
@@ -280,11 +280,11 @@
                 </div>
                 <div class="hero-actions">
                     <a href="https://github.com/We-Are-Starlight-Chaser/SMSM" class="btn btn-filled" target="_blank">
-                        <span class="material-icons">star</span>
+                        <span class="fluent-icon" data-icon="star"></span>
                         点亮 Star
                     </a>
                     <a href="./pages/projects.html" class="btn btn-outline">
-                        <span class="material-icons">arrow_forward</span>
+                        <span class="fluent-icon" data-icon="arrow_forward"></span>
                         了解更多
                     </a>
                 </div>
@@ -325,15 +325,15 @@
     <footer>
         <div class="footer-content">
             <!-- 快速导航 -->
-            <div style="margin-bottom: 24px;">
+            <div style="margin-bottom: 16px;">
                 <a href="./index.html"
-                    style="color: var(--md-on-surface-variant); text-decoration: none; margin: 0 12px;">首页</a>
+                    style="color: var(--fluent-neutral-foreground-secondary); text-decoration: none; margin: 0 12px;">首页</a>
                 <a href="./pages/team.html"
-                    style="color: var(--md-on-surface-variant); text-decoration: none; margin: 0 12px;">关于我们</a>
+                    style="color: var(--fluent-neutral-foreground-secondary); text-decoration: none; margin: 0 12px;">关于我们</a>
                 <a href="./pages/projects.html"
-                    style="color: var(--md-on-surface-variant); text-decoration: none; margin: 0 12px;">开源项目</a>
+                    style="color: var(--fluent-neutral-foreground-secondary); text-decoration: none; margin: 0 12px;">开源项目</a>
                 <a href="https://github.com/We-Are-Starlight-Chaser"
-                    style="color: var(--md-on-surface-variant); text-decoration: none; margin: 0 12px;"
+                    style="color: var(--fluent-neutral-foreground-secondary); text-decoration: none; margin: 0 12px;"
                     target="_blank">GitHub</a>
             </div>
 
@@ -359,18 +359,18 @@
 
     <!-- 更新提示小部件 - 从 JSON 加载 -->
     <div class="update-widget" id="updateWidget">
-        <span class="material-icons update-widget-icon">new_releases</span>
+        <span class="fluent-icon update-widget-icon" data-icon="checkmark_circle"></span>
         <div class="update-info">
             <h4>发现新版本</h4>
             <p id="updateVersion">SMSM v2.0 可用</p>
             <p id="updateDescription">新增了更多功能，如插件系统、多语言支持等。</p>
         </div>
-        <button class="btn btn-filled" style="padding: 8px 16px;">查看</button>
+        <button class="btn btn-filled" style="padding: 4px 12px; min-height: 28px; font-size: 12px;">查看</button>
     </div>
 
     <!-- 主题切换按钮 -->
     <button class="theme-toggle" id="themeToggle" title="切换主题">
-        <span class="material-icons" id="themeIcon">light_mode</span>
+        <span class="fluent-icon" id="themeIcon" data-icon="weather_sunny"></span>
     </button>
 
     <!-- jQuery 库 -->

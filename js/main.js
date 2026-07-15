@@ -228,7 +228,6 @@ $(document).ready(function () {
      */
     function applyTheme(theme) {
         $('html').attr('data-theme', theme);
-        $('#themeIcon').text(theme === 'dark' ? 'light_mode' : 'dark_mode');
         StarlightChaser.utils.storage.set('theme', theme);
     }
 
@@ -317,7 +316,7 @@ $(document).ready(function () {
         // 更新徽章
         if (badge) {
             $('#heroBadge').html(`
-                <span class="material-icons">${badge.icon || 'verified'}</span>
+                <span class="fluent-icon" data-icon="checkmark_circle"></span>
                 <span>${badge.text}</span>
             `);
         }
@@ -332,15 +331,18 @@ $(document).ready(function () {
             </div>
             <div class="hero-actions">
                 <a href="${project.download_url}" class="btn btn-filled">
-                    <span class="material-icons">download</span>
+                    <span class="fluent-icon" data-icon="arrow_download"></span>
                     立即下载
                 </a>
                 <a href="${project.github_url}" class="btn btn-outline" target="_blank">
-                    <span class="material-icons">code</span>
+                    <span class="fluent-icon" data-icon="code"></span>
                     查看源码
                 </a>
             </div>
         `);
+
+        // 加载动态生成的 SVG 图标
+        loadFluentIcons();
     }
 
     /**
@@ -393,7 +395,7 @@ $(document).ready(function () {
         const html = data.features.map(feature => `
             <div class="card" data-feature-id="${feature.id}">
                 <div class="card-icon">
-                    <span class="material-icons">${feature.icon}</span>
+                    <span class="fluent-icon" data-icon="${feature.icon}"></span>
                 </div>
                 <h3>${feature.title}</h3>
                 <p>${feature.description}</p>
@@ -401,6 +403,9 @@ $(document).ready(function () {
         `).join('');
 
         $grid.html(html);
+
+        // 加载动态生成的 SVG 图标
+        loadFluentIcons();
 
         // 为新添加的卡片添加涟漪效果
         $grid.find('.card').ripple();
@@ -521,6 +526,7 @@ $(document).ready(function () {
         // 加载网站配置
         await loadSiteConfig();
 
+        await StarlightChaser.utils.loadFluentIcons();
         // 加载各模块数据
         await Promise.all([
             loadLatestProject(),
